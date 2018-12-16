@@ -4,7 +4,7 @@ class MunicipiosController < ApplicationController
   # GET /municipios
   # GET /municipios.json
   def index
-    @municipios = Municipio.all
+    @municipios = Municipio.where(activo: true)
   end
 
   # GET /municipios/1
@@ -54,10 +54,11 @@ class MunicipiosController < ApplicationController
   # DELETE /municipios/1
   # DELETE /municipios/1.json
   def destroy
-    @municipio.destroy
-    respond_to do |format|
-      format.html { redirect_to municipios_url, notice: 'Municipio was successfully destroyed.' }
-      format.json { head :no_content }
+    if @municipio.update_attributes(:activo => false)
+      format.html { redirect_to municipios_url, notice: 'el municipio ha sido eliminado correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @municipio.errors, status: :unprocessable_entity }
     end
   end
 

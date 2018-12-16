@@ -4,7 +4,7 @@ class VoluntariosController < ApplicationController
   # GET /voluntarios
   # GET /voluntarios.json
   def index
-    @voluntarios = Voluntario.all
+    @voluntarios = Voluntario.where(activo: true)
   end
 
   # GET /voluntarios/1
@@ -54,10 +54,11 @@ class VoluntariosController < ApplicationController
   # DELETE /voluntarios/1
   # DELETE /voluntarios/1.json
   def destroy
-    @voluntario.destroy
-    respond_to do |format|
-      format.html { redirect_to voluntarios_url, notice: 'Voluntario was successfully destroyed.' }
-      format.json { head :no_content }
+    if @voluntario.update_attributes(:activo => false)
+      format.html { redirect_to voluntarios_url, notice: 'El voluntario ha sido eliminado correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @voluntario.errors, status: :unprocessable_entity }
     end
   end
 

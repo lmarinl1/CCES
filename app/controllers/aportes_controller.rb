@@ -4,7 +4,7 @@ class AportesController < ApplicationController
   # GET /aportes
   # GET /aportes.json
   def index
-    @aportes = Aporte.all
+    @aportes = Aporte.where(activo: true)
   end
 
   # GET /aportes/1
@@ -54,10 +54,11 @@ class AportesController < ApplicationController
   # DELETE /aportes/1
   # DELETE /aportes/1.json
   def destroy
-    @aporte.destroy
-    respond_to do |format|
-      format.html { redirect_to aportes_url, notice: 'Aporte was successfully destroyed.' }
-      format.json { head :no_content }
+    if @aporte.update_attributes(:activo => false)
+      format.html { redirect_to aportes_url, notice: 'El aporte ha sido eliminado correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @aporte.errors, status: :unprocessable_entity }
     end
   end
 

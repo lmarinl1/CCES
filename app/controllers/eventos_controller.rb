@@ -4,7 +4,7 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+    @eventos = Evento.where(activo: true)
   end
 
   # GET /eventos/1
@@ -54,10 +54,11 @@ class EventosController < ApplicationController
   # DELETE /eventos/1
   # DELETE /eventos/1.json
   def destroy
-    @evento.destroy
-    respond_to do |format|
-      format.html { redirect_to eventos_url, notice: 'Evento was successfully destroyed.' }
-      format.json { head :no_content }
+    if @evento.update_attributes(:activo => false)
+      format.html { redirect_to eventos_url, notice: 'el evento ha sido eliminado correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @evento.errors, status: :unprocessable_entity }
     end
   end
 

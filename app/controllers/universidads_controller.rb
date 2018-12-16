@@ -4,7 +4,7 @@ class UniversidadsController < ApplicationController
   # GET /universidads
   # GET /universidads.json
   def index
-    @universidads = Universidad.all
+    @universidads = Universidad.where(activo: true)
   end
 
   # GET /universidads/1
@@ -54,10 +54,11 @@ class UniversidadsController < ApplicationController
   # DELETE /universidads/1
   # DELETE /universidads/1.json
   def destroy
-    @universidad.destroy
-    respond_to do |format|
-      format.html { redirect_to universidads_url, notice: 'Universidad was successfully destroyed.' }
-      format.json { head :no_content }
+    if @universidad.update_attributes(:activo => false)
+      format.html { redirect_to universidads_url, notice: 'La universidad ha sido eliminada correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @universidad.errors, status: :unprocessable_entity }
     end
   end
 

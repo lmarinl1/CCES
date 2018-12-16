@@ -4,7 +4,7 @@ class PuntosController < ApplicationController
   # GET /puntos
   # GET /puntos.json
   def index
-    @puntos = Punto.all
+    @puntos = Punto.where(activo: true)
   end
 
   # GET /puntos/1
@@ -54,10 +54,11 @@ class PuntosController < ApplicationController
   # DELETE /puntos/1
   # DELETE /puntos/1.json
   def destroy
-    @punto.destroy
-    respond_to do |format|
-      format.html { redirect_to puntos_url, notice: 'Punto was successfully destroyed.' }
-      format.json { head :no_content }
+    if @punto.update_attributes(:activo => false)
+      format.html { redirect_to puntos_url, notice: 'La calificacion ha sido eliminada correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @punto.errors, status: :unprocessable_entity }
     end
   end
 

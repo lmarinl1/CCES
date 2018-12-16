@@ -4,7 +4,7 @@ class ZonasController < ApplicationController
   # GET /zonas
   # GET /zonas.json
   def index
-    @zonas = Zona.all
+    @zonas = Zona.where(activo: true)
   end
 
   # GET /zonas/1
@@ -54,10 +54,11 @@ class ZonasController < ApplicationController
   # DELETE /zonas/1
   # DELETE /zonas/1.json
   def destroy
-    @zona.destroy
-    respond_to do |format|
-      format.html { redirect_to zonas_url, notice: 'Zona was successfully destroyed.' }
-      format.json { head :no_content }
+    if @zona.update_attributes(:activo => false)
+      format.html { redirect_to zonas_url, notice: 'La zona ha sido eliminada correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @zona.errors, status: :unprocessable_entity }
     end
   end
 

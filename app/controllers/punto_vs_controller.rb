@@ -4,7 +4,7 @@ class PuntoVsController < ApplicationController
   # GET /punto_vs
   # GET /punto_vs.json
   def index
-    @punto_vs = PuntoV.all
+    @punto_vs = PuntoV.where(activo: true)
   end
 
   # GET /punto_vs/1
@@ -54,10 +54,11 @@ class PuntoVsController < ApplicationController
   # DELETE /punto_vs/1
   # DELETE /punto_vs/1.json
   def destroy
-    @punto_v.destroy
-    respond_to do |format|
-      format.html { redirect_to punto_vs_url, notice: 'Punto v was successfully destroyed.' }
-      format.json { head :no_content }
+    if @punto_v.update_attributes(:activo => false)
+      format.html { redirect_to punto_v_url, notice: 'el punto de votacion ha sido eliminado correctamente' }
+    else
+      format.html { render :edit }
+      format.json { render json: @punto_v.errors, status: :unprocessable_entity }
     end
   end
 

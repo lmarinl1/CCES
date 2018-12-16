@@ -4,7 +4,7 @@ class EstefansController < ApplicationController
   # GET /estefans
   # GET /estefans.json
   def index
-    @estefans = Estefan.all
+    @estefans = Estefan.where(activo: true)
   end
 
   # GET /estefans/1
@@ -54,10 +54,11 @@ class EstefansController < ApplicationController
   # DELETE /estefans/1
   # DELETE /estefans/1.json
   def destroy
-    @estefan.destroy
-    respond_to do |format|
-      format.html { redirect_to estefans_url, notice: 'Estefan was successfully destroyed.' }
-      format.json { head :no_content }
+    if @estefan.update_attributes(:activo => false)
+      format.html { redirect_to estefans_url, notice: 'El usuario ha sido eliminado correctamente' }
+    else
+      format.html { render :edit }
+      format.json { render json: @estefan.errors, status: :unprocessable_entity }
     end
   end
 

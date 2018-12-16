@@ -4,7 +4,7 @@ class EmpresariosController < ApplicationController
   # GET /empresarios
   # GET /empresarios.json
   def index
-    @empresarios = Empresario.all
+    @empresarios = Empresario.where(activo: true)
   end
 
   # GET /empresarios/1
@@ -54,10 +54,11 @@ class EmpresariosController < ApplicationController
   # DELETE /empresarios/1
   # DELETE /empresarios/1.json
   def destroy
-    @empresario.destroy
-    respond_to do |format|
-      format.html { redirect_to empresarios_url, notice: 'Empresario was successfully destroyed.' }
-      format.json { head :no_content }
+    if @empresario.update_attributes(:activo => false)
+      format.html { redirect_to empresarios_url, notice: 'El empresario ha sido eliminado correctamente.' }
+    else
+      format.html { render :edit }
+      format.json { render json: @empresario.errors, status: :unprocessable_entity }
     end
   end
 

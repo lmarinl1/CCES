@@ -4,7 +4,7 @@ class PoliticosController < ApplicationController
   # GET /politicos
   # GET /politicos.json
   def index
-    @politicos = Politico.all
+    @politicos = Politico.where(activo: true)
   end
 
   # GET /politicos/1
@@ -54,10 +54,11 @@ class PoliticosController < ApplicationController
   # DELETE /politicos/1
   # DELETE /politicos/1.json
   def destroy
-    @politico.destroy
-    respond_to do |format|
-      format.html { redirect_to politicos_url, notice: 'Politico was successfully destroyed.' }
-      format.json { head :no_content }
+    if @politico.update_attributes(:activo => false)
+      format.html { redirect_to politicos_url, notice: 'El politico ha sido eliminado correctamente' }
+    else
+      format.html { render :edit }
+      format.json { render json: @politico.errors, status: :unprocessable_entity }
     end
   end
 
