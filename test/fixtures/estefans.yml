@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cedula: MyString
+  nombre: MyString
+  apellido: MyString
+  nacimento: 2018-12-16
+  cargo: MyString
+  email: MyString
+  creador: 1
+  activo: false
+  modificador: 1
+  cel: MyString
+  zona: 1
+  municipio: 1
+  instagram: MyString
+  facebook: MyString
+  twitter: MyString
+  whatsapp: MyString
+  descripcion: MyText
+  sexo: MyString
+  puntov: 1
+
+two:
+  cedula: MyString
+  nombre: MyString
+  apellido: MyString
+  nacimento: 2018-12-16
+  cargo: MyString
+  email: MyString
+  creador: 1
+  activo: false
+  modificador: 1
+  cel: MyString
+  zona: 1
+  municipio: 1
+  instagram: MyString
+  facebook: MyString
+  twitter: MyString
+  whatsapp: MyString
+  descripcion: MyText
+  sexo: MyString
+  puntov: 1

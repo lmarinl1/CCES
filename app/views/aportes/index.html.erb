@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aportes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activo</th>
+      <th>Modificador</th>
+      <th>Creador</th>
+      <th>Descripcion</th>
+      <th>Nombre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aportes.each do |aporte| %>
+      <tr>
+        <td><%= aporte.activo %></td>
+        <td><%= aporte.modificador %></td>
+        <td><%= aporte.creador %></td>
+        <td><%= aporte.descripcion %></td>
+        <td><%= aporte.nombre %></td>
+        <td><%= link_to 'Show', aporte %></td>
+        <td><%= link_to 'Edit', edit_aporte_path(aporte) %></td>
+        <td><%= link_to 'Destroy', aporte, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aporte', new_aporte_path %>

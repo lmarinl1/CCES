@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  municipio: 1
+  activo: false
+  modificador: 1
+  creador: 1
+  descripcion: MyText
+  nombre: MyString
+  apellido: MyString
+  cedula: MyString
+  sexo: MyString
+  partido: MyString
+  telefono: MyString
+  celular: MyString
+  email: MyString
+  whatsapp: MyString
+  instagram: MyString
+  twitter: MyString
+  facebook: MyString
+  puntov: 1
+  cNombre: MyString
+  cCel1: MyString
+  cCel2: MyString
+  cTel: MyString
+  cWhatsapp: MyString
+  cEmail: MyString
+
+two:
+  municipio: 1
+  activo: false
+  modificador: 1
+  creador: 1
+  descripcion: MyText
+  nombre: MyString
+  apellido: MyString
+  cedula: MyString
+  sexo: MyString
+  partido: MyString
+  telefono: MyString
+  celular: MyString
+  email: MyString
+  whatsapp: MyString
+  instagram: MyString
+  twitter: MyString
+  facebook: MyString
+  puntov: 1
+  cNombre: MyString
+  cCel1: MyString
+  cCel2: MyString
+  cTel: MyString
+  cWhatsapp: MyString
+  cEmail: MyString

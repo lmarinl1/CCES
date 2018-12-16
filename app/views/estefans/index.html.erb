@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estefans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cedula</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Nacimento</th>
+      <th>Cargo</th>
+      <th>Email</th>
+      <th>Creador</th>
+      <th>Activo</th>
+      <th>Modificador</th>
+      <th>Cel</th>
+      <th>Zona</th>
+      <th>Municipio</th>
+      <th>Instagram</th>
+      <th>Facebook</th>
+      <th>Twitter</th>
+      <th>Whatsapp</th>
+      <th>Descripcion</th>
+      <th>Sexo</th>
+      <th>Puntov</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estefans.each do |estefan| %>
+      <tr>
+        <td><%= estefan.cedula %></td>
+        <td><%= estefan.nombre %></td>
+        <td><%= estefan.apellido %></td>
+        <td><%= estefan.nacimento %></td>
+        <td><%= estefan.cargo %></td>
+        <td><%= estefan.email %></td>
+        <td><%= estefan.creador %></td>
+        <td><%= estefan.activo %></td>
+        <td><%= estefan.modificador %></td>
+        <td><%= estefan.cel %></td>
+        <td><%= estefan.zona %></td>
+        <td><%= estefan.municipio %></td>
+        <td><%= estefan.instagram %></td>
+        <td><%= estefan.facebook %></td>
+        <td><%= estefan.twitter %></td>
+        <td><%= estefan.whatsapp %></td>
+        <td><%= estefan.descripcion %></td>
+        <td><%= estefan.sexo %></td>
+        <td><%= estefan.puntov %></td>
+        <td><%= link_to 'Show', estefan %></td>
+        <td><%= link_to 'Edit', edit_estefan_path(estefan) %></td>
+        <td><%= link_to 'Destroy', estefan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estefan', new_estefan_path %>

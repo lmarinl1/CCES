@@ -1,0 +1,52 @@
+<%= form_with(model: punto, local: true) do |form| %>
+  <% if punto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(punto.errors.count, "error") %> prohibited this punto from being saved:</h2>
+
+      <ul>
+      <% punto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :activo %>
+    <%= form.check_box :activo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modificador %>
+    <%= form.number_field :modificador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :creador %>
+    <%= form.number_field :creador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :puntos %>
+    <%= form.text_field :puntos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo %>
+    <%= form.text_field :tipo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :punteado %>
+    <%= form.number_field :punteado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

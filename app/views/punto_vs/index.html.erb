@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Punto Vs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Zona</th>
+      <th>Activo</th>
+      <th>Modificador</th>
+      <th>Creador</th>
+      <th>Descripcion</th>
+      <th>Direccion</th>
+      <th>Nromesas</th>
+      <th>Nropersonasmesa</th>
+      <th>Hombres</th>
+      <th>Mujeres</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @punto_vs.each do |punto_v| %>
+      <tr>
+        <td><%= punto_v.nombre %></td>
+        <td><%= punto_v.zona %></td>
+        <td><%= punto_v.activo %></td>
+        <td><%= punto_v.modificador %></td>
+        <td><%= punto_v.creador %></td>
+        <td><%= punto_v.descripcion %></td>
+        <td><%= punto_v.direccion %></td>
+        <td><%= punto_v.nromesas %></td>
+        <td><%= punto_v.nropersonasmesa %></td>
+        <td><%= punto_v.hombres %></td>
+        <td><%= punto_v.mujeres %></td>
+        <td><%= link_to 'Show', punto_v %></td>
+        <td><%= link_to 'Edit', edit_punto_v_path(punto_v) %></td>
+        <td><%= link_to 'Destroy', punto_v, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Punto V', new_punto_v_path %>

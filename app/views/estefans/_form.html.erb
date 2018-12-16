@@ -1,0 +1,112 @@
+<%= form_with(model: estefan, local: true) do |form| %>
+  <% if estefan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estefan.errors.count, "error") %> prohibited this estefan from being saved:</h2>
+
+      <ul>
+      <% estefan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cedula %>
+    <%= form.text_field :cedula %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido %>
+    <%= form.text_field :apellido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nacimento %>
+    <%= form.date_select :nacimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cargo %>
+    <%= form.text_field :cargo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :creador %>
+    <%= form.number_field :creador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activo %>
+    <%= form.check_box :activo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modificador %>
+    <%= form.number_field :modificador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cel %>
+    <%= form.text_field :cel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zona %>
+    <%= form.number_field :zona %>
+  </div>
+
+  <div class="field">
+    <%= form.label :municipio %>
+    <%= form.number_field :municipio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instagram %>
+    <%= form.text_field :instagram %>
+  </div>
+
+  <div class="field">
+    <%= form.label :facebook %>
+    <%= form.text_field :facebook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :twitter %>
+    <%= form.text_field :twitter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :whatsapp %>
+    <%= form.text_field :whatsapp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexo %>
+    <%= form.text_field :sexo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :puntov %>
+    <%= form.number_field :puntov %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

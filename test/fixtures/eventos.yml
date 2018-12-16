@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zona: 1
+  activo: false
+  fecha: 2018-12-16
+  modificador: 1
+  creador: 1
+  descripcion: MyText
+  nombre: MyString
+  direccion: MyString
+
+two:
+  zona: 1
+  activo: false
+  fecha: 2018-12-16
+  modificador: 1
+  creador: 1
+  descripcion: MyText
+  nombre: MyString
+  direccion: MyString

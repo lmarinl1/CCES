@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activo: false
+  modificador: 1
+  creador: 1
+  descripcion: MyText
+  nombre: MyString
+
+two:
+  activo: false
+  modificador: 1
+  creador: 1
+  descripcion: MyText
+  nombre: MyString

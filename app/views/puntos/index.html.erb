@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Puntos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activo</th>
+      <th>Modificador</th>
+      <th>Creador</th>
+      <th>Descripcion</th>
+      <th>Puntos</th>
+      <th>Tipo</th>
+      <th>Punteado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @puntos.each do |punto| %>
+      <tr>
+        <td><%= punto.activo %></td>
+        <td><%= punto.modificador %></td>
+        <td><%= punto.creador %></td>
+        <td><%= punto.descripcion %></td>
+        <td><%= punto.puntos %></td>
+        <td><%= punto.tipo %></td>
+        <td><%= punto.punteado %></td>
+        <td><%= link_to 'Show', punto %></td>
+        <td><%= link_to 'Edit', edit_punto_path(punto) %></td>
+        <td><%= link_to 'Destroy', punto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Punto', new_punto_path %>

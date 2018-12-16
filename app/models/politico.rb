@@ -1,0 +1,2 @@
+class Politico < ApplicationRecord
+end

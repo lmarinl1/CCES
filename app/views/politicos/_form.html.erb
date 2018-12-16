@@ -1,0 +1,137 @@
+<%= form_with(model: politico, local: true) do |form| %>
+  <% if politico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(politico.errors.count, "error") %> prohibited this politico from being saved:</h2>
+
+      <ul>
+      <% politico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :municipio %>
+    <%= form.number_field :municipio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activo %>
+    <%= form.check_box :activo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modificador %>
+    <%= form.number_field :modificador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :creador %>
+    <%= form.number_field :creador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido %>
+    <%= form.text_field :apellido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cedula %>
+    <%= form.text_field :cedula %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexo %>
+    <%= form.text_field :sexo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :partido %>
+    <%= form.text_field :partido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono %>
+    <%= form.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= form.label :celular %>
+    <%= form.text_field :celular %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :whatsapp %>
+    <%= form.text_field :whatsapp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instagram %>
+    <%= form.text_field :instagram %>
+  </div>
+
+  <div class="field">
+    <%= form.label :twitter %>
+    <%= form.text_field :twitter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :facebook %>
+    <%= form.text_field :facebook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :puntov %>
+    <%= form.number_field :puntov %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cNombre %>
+    <%= form.text_field :cNombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cCel1 %>
+    <%= form.text_field :cCel1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cCel2 %>
+    <%= form.text_field :cCel2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cTel %>
+    <%= form.text_field :cTel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cWhatsapp %>
+    <%= form.text_field :cWhatsapp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cEmail %>
+    <%= form.text_field :cEmail %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

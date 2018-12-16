@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Municipio:</strong>
+  <%= @universidad.municipio %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @universidad.activo %>
+</p>
+
+<p>
+  <strong>Modificador:</strong>
+  <%= @universidad.modificador %>
+</p>
+
+<p>
+  <strong>Creador:</strong>
+  <%= @universidad.creador %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @universidad.descripcion %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @universidad.nombre %>
+</p>
+
+<p>
+  <strong>Nit:</strong>
+  <%= @universidad.nit %>
+</p>
+
+<p>
+  <strong>Nroestudiantes:</strong>
+  <%= @universidad.nroEstudiantes %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @universidad.direccion %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @universidad.facebook %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @universidad.twitter %>
+</p>
+
+<p>
+  <strong>Instagram:</strong>
+  <%= @universidad.instagram %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @universidad.web %>
+</p>
+
+<%= link_to 'Edit', edit_universidad_path(@universidad) %> |
+<%= link_to 'Back', universidads_path %>

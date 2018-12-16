@@ -1,0 +1,2 @@
+class Estefan < ApplicationRecord
+end

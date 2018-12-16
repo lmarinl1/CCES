@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @aporte.activo %>
+</p>
+
+<p>
+  <strong>Modificador:</strong>
+  <%= @aporte.modificador %>
+</p>
+
+<p>
+  <strong>Creador:</strong>
+  <%= @aporte.creador %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @aporte.descripcion %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @aporte.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_aporte_path(@aporte) %> |
+<%= link_to 'Back', aportes_path %>

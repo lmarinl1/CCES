@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Municipios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Categoria</th>
+      <th>Departamento</th>
+      <th>Activo</th>
+      <th>Modificador</th>
+      <th>Creador</th>
+      <th>Web</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @municipios.each do |municipio| %>
+      <tr>
+        <td><%= municipio.nombre %></td>
+        <td><%= municipio.categoria %></td>
+        <td><%= municipio.departamento %></td>
+        <td><%= municipio.activo %></td>
+        <td><%= municipio.modificador %></td>
+        <td><%= municipio.creador %></td>
+        <td><%= municipio.web %></td>
+        <td><%= municipio.descripcion %></td>
+        <td><%= link_to 'Show', municipio %></td>
+        <td><%= link_to 'Edit', edit_municipio_path(municipio) %></td>
+        <td><%= link_to 'Destroy', municipio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Municipio', new_municipio_path %>

@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Politicos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Municipio</th>
+      <th>Activo</th>
+      <th>Modificador</th>
+      <th>Creador</th>
+      <th>Descripcion</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Cedula</th>
+      <th>Sexo</th>
+      <th>Partido</th>
+      <th>Telefono</th>
+      <th>Celular</th>
+      <th>Email</th>
+      <th>Whatsapp</th>
+      <th>Instagram</th>
+      <th>Twitter</th>
+      <th>Facebook</th>
+      <th>Puntov</th>
+      <th>Cnombre</th>
+      <th>Ccel1</th>
+      <th>Ccel2</th>
+      <th>Ctel</th>
+      <th>Cwhatsapp</th>
+      <th>Cemail</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @politicos.each do |politico| %>
+      <tr>
+        <td><%= politico.municipio %></td>
+        <td><%= politico.activo %></td>
+        <td><%= politico.modificador %></td>
+        <td><%= politico.creador %></td>
+        <td><%= politico.descripcion %></td>
+        <td><%= politico.nombre %></td>
+        <td><%= politico.apellido %></td>
+        <td><%= politico.cedula %></td>
+        <td><%= politico.sexo %></td>
+        <td><%= politico.partido %></td>
+        <td><%= politico.telefono %></td>
+        <td><%= politico.celular %></td>
+        <td><%= politico.email %></td>
+        <td><%= politico.whatsapp %></td>
+        <td><%= politico.instagram %></td>
+        <td><%= politico.twitter %></td>
+        <td><%= politico.facebook %></td>
+        <td><%= politico.puntov %></td>
+        <td><%= politico.cNombre %></td>
+        <td><%= politico.cCel1 %></td>
+        <td><%= politico.cCel2 %></td>
+        <td><%= politico.cTel %></td>
+        <td><%= politico.cWhatsapp %></td>
+        <td><%= politico.cEmail %></td>
+        <td><%= link_to 'Show', politico %></td>
+        <td><%= link_to 'Edit', edit_politico_path(politico) %></td>
+        <td><%= link_to 'Destroy', politico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Politico', new_politico_path %>

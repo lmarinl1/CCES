@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @punto.activo %>
+</p>
+
+<p>
+  <strong>Modificador:</strong>
+  <%= @punto.modificador %>
+</p>
+
+<p>
+  <strong>Creador:</strong>
+  <%= @punto.creador %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @punto.descripcion %>
+</p>
+
+<p>
+  <strong>Puntos:</strong>
+  <%= @punto.puntos %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @punto.tipo %>
+</p>
+
+<p>
+  <strong>Punteado:</strong>
+  <%= @punto.punteado %>
+</p>
+
+<%= link_to 'Edit', edit_punto_path(@punto) %> |
+<%= link_to 'Back', puntos_path %>

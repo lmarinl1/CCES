@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @zona.nombre %>
+</p>
+
+<p>
+  <strong>Municipio:</strong>
+  <%= @zona.municipio %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @zona.activo %>
+</p>
+
+<p>
+  <strong>Modificador:</strong>
+  <%= @zona.modificador %>
+</p>
+
+<p>
+  <strong>Creador:</strong>
+  <%= @zona.creador %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @zona.descripcion %>
+</p>
+
+<%= link_to 'Edit', edit_zona_path(@zona) %> |
+<%= link_to 'Back', zonas_path %>
