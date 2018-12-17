@@ -17,6 +17,7 @@ class ZonasTest < ApplicationSystemTestCase
     fill_in "Activo", with: @zona.activo
     fill_in "Creador", with: @zona.creador
     fill_in "Descripcion", with: @zona.descripcion
+    fill_in "Lmap", with: @zona.lmap
     fill_in "Modificador", with: @zona.modificador
     fill_in "Municipio", with: @zona.municipio
     fill_in "Nombre", with: @zona.nombre
@@ -33,6 +34,7 @@ class ZonasTest < ApplicationSystemTestCase
     fill_in "Activo", with: @zona.activo
     fill_in "Creador", with: @zona.creador
     fill_in "Descripcion", with: @zona.descripcion
+    fill_in "Lmap", with: @zona.lmap
     fill_in "Modificador", with: @zona.modificador
     fill_in "Municipio", with: @zona.municipio
     fill_in "Nombre", with: @zona.nombre

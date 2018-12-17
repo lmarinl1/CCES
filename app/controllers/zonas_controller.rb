@@ -4,7 +4,7 @@ class ZonasController < ApplicationController
   # GET /zonas
   # GET /zonas.json
   def index
-    @zonas = Zona.where(activo: true)
+    @zonas = Zona.all
   end
 
   # GET /zonas/1
@@ -54,11 +54,10 @@ class ZonasController < ApplicationController
   # DELETE /zonas/1
   # DELETE /zonas/1.json
   def destroy
-    if @zona.update_attributes(:activo => false)
-      format.html { redirect_to zonas_url, notice: 'La zona ha sido eliminada correctamente.' }
-    else
-      format.html { render :edit }
-      format.json { render json: @zona.errors, status: :unprocessable_entity }
+    @zona.destroy
+    respond_to do |format|
+      format.html { redirect_to zonas_url, notice: 'Zona was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
@@ -70,6 +69,6 @@ class ZonasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zona_params
-      params.require(:zona).permit(:nombre, :municipio, :activo, :modificador, :creador, :descripcion)
+      params.require(:zona).permit(:nombre, :municipio, :activo, :modificador, :creador, :lmap, :descripcion)
     end
 end

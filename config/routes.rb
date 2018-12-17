@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :zonas
   devise_for :users
   resources :puntos
   resources :empresarios
@@ -9,7 +10,6 @@ Rails.application.routes.draw do
   resources :empresas
   resources :politicos
   resources :punto_vs
-  resources :zonas
   resources :municipios
   resources :estefans
 

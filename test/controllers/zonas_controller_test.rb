@@ -17,7 +17,7 @@ class ZonasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create zona" do
     assert_difference('Zona.count') do
-      post zonas_url, params: { zona: { activo: @zona.activo, creador: @zona.creador, descripcion: @zona.descripcion, modificador: @zona.modificador, municipio: @zona.municipio, nombre: @zona.nombre } }
+      post zonas_url, params: { zona: { activo: @zona.activo, creador: @zona.creador, descripcion: @zona.descripcion, lmap: @zona.lmap, modificador: @zona.modificador, municipio: @zona.municipio, nombre: @zona.nombre } }
     end
 
     assert_redirected_to zona_url(Zona.last)
@@ -34,7 +34,7 @@ class ZonasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update zona" do
-    patch zona_url(@zona), params: { zona: { activo: @zona.activo, creador: @zona.creador, descripcion: @zona.descripcion, modificador: @zona.modificador, municipio: @zona.municipio, nombre: @zona.nombre } }
+    patch zona_url(@zona), params: { zona: { activo: @zona.activo, creador: @zona.creador, descripcion: @zona.descripcion, lmap: @zona.lmap, modificador: @zona.modificador, municipio: @zona.municipio, nombre: @zona.nombre } }
     assert_redirected_to zona_url(@zona)
   end
 
