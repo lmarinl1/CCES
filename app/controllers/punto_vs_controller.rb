@@ -4,7 +4,11 @@ class PuntoVsController < ApplicationController
   # GET /punto_vs
   # GET /punto_vs.json
   def index
-    @punto_vs = PuntoV.where(activo: true)
+    if current_user.id == 1 then
+      @punto_vs = PuntoV.all
+    else
+      @punto_vs = PuntoV.where(activo: true)
+    end
   end
 
   # GET /punto_vs/1
@@ -25,6 +29,8 @@ class PuntoVsController < ApplicationController
   # POST /punto_vs.json
   def create
     @punto_v = PuntoV.new(punto_v_params)
+    @punto_v.creador = current_user.id
+    @punto_v.modificador = current_user.id
 
     respond_to do |format|
       if @punto_v.save
@@ -41,7 +47,7 @@ class PuntoVsController < ApplicationController
   # PATCH/PUT /punto_vs/1.json
   def update
     respond_to do |format|
-      if @punto_v.update(punto_v_params)
+      if @punto_v.update(punto_v_params) and update_attributes(:modificador => current_user.id)
         format.html { redirect_to @punto_v, notice: 'Punto v was successfully updated.' }
         format.json { render :show, status: :ok, location: @punto_v }
       else
@@ -54,8 +60,8 @@ class PuntoVsController < ApplicationController
   # DELETE /punto_vs/1
   # DELETE /punto_vs/1.json
   def destroy
-    if @punto_v.update_attributes(:activo => false)
-      format.html { redirect_to punto_v_url, notice: 'el punto de votacion ha sido eliminado correctamente' }
+    if @punto_v.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to punto_v_url
     else
       format.html { render :edit }
       format.json { render json: @punto_v.errors, status: :unprocessable_entity }

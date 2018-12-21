@@ -4,7 +4,11 @@ class EmpresariosController < ApplicationController
   # GET /empresarios
   # GET /empresarios.json
   def index
-    @empresarios = Empresario.where(activo: true)
+    if current_user.id == 1 then
+      @empresarios = Empresario.all
+    else
+      @empresarios = Empresario.where(activo: true)
+    end
   end
 
   # GET /empresarios/1
@@ -25,6 +29,8 @@ class EmpresariosController < ApplicationController
   # POST /empresarios.json
   def create
     @empresario = Empresario.new(empresario_params)
+    @empresario.creador = current_user.id
+    @empresario.modificador = current_user.id
 
     respond_to do |format|
       if @empresario.save
@@ -41,7 +47,7 @@ class EmpresariosController < ApplicationController
   # PATCH/PUT /empresarios/1.json
   def update
     respond_to do |format|
-      if @empresario.update(empresario_params)
+      if @empresario.update(empresario_params) and @empresario.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @empresario, notice: 'Empresario was successfully updated.' }
         format.json { render :show, status: :ok, location: @empresario }
       else
@@ -54,8 +60,8 @@ class EmpresariosController < ApplicationController
   # DELETE /empresarios/1
   # DELETE /empresarios/1.json
   def destroy
-    if @empresario.update_attributes(:activo => false)
-      format.html { redirect_to empresarios_url, notice: 'El empresario ha sido eliminado correctamente.' }
+    if @empresario.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to empresarios_url
     else
       format.html { render :edit }
       format.json { render json: @empresario.errors, status: :unprocessable_entity }

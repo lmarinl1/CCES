@@ -4,7 +4,11 @@ class PoliticosController < ApplicationController
   # GET /politicos
   # GET /politicos.json
   def index
-    @politicos = Politico.where(activo: true)
+    if current_user.id == 1 then
+      @politicos = Politico.all
+    else
+      @politicos = Politico.where(activo: true)
+    end
   end
 
   # GET /politicos/1
@@ -25,6 +29,8 @@ class PoliticosController < ApplicationController
   # POST /politicos.json
   def create
     @politico = Politico.new(politico_params)
+    @politico.creador = current_user.id
+    @politico.modificador = current_user.id
 
     respond_to do |format|
       if @politico.save
@@ -41,7 +47,7 @@ class PoliticosController < ApplicationController
   # PATCH/PUT /politicos/1.json
   def update
     respond_to do |format|
-      if @politico.update(politico_params)
+      if @politico.update(politico_params) and @politico.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @politico, notice: 'Politico was successfully updated.' }
         format.json { render :show, status: :ok, location: @politico }
       else
@@ -54,8 +60,8 @@ class PoliticosController < ApplicationController
   # DELETE /politicos/1
   # DELETE /politicos/1.json
   def destroy
-    if @politico.update_attributes(:activo => false)
-      format.html { redirect_to politicos_url, notice: 'El politico ha sido eliminado correctamente' }
+    if @politico.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to politicos_url
     else
       format.html { render :edit }
       format.json { render json: @politico.errors, status: :unprocessable_entity }

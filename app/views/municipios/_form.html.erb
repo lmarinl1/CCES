@@ -27,21 +27,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :activo %>
-    <%= form.check_box :activo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :modificador %>
-    <%= form.text_field :modificador %>
-  </div>
-
-  <div class="field">
-    <%= form.label :creador %>
-    <%= form.text_field :creador %>
-  </div>
-
-  <div class="field">
     <%= form.label :web %>
     <%= form.text_field :web %>
   </div>
@@ -50,6 +35,13 @@
     <%= form.label :descripcion %>
     <%= form.text_area :descripcion %>
   </div>
+
+  <% if current_user.id == 1 then %>
+    <div class="field">
+      <%= form.label :activo %>
+      <%= form.check_box :activo %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

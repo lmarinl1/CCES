@@ -4,7 +4,11 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.where(activo: true)
+    if current_user.id == 1 then
+      @eventos = Evento.all
+    else
+      @eventos = Evento.where(activo: true)
+    end
   end
 
   # GET /eventos/1
@@ -25,6 +29,8 @@ class EventosController < ApplicationController
   # POST /eventos.json
   def create
     @evento = Evento.new(evento_params)
+    @evento.creador = current_user.id
+    @evento.modificador = current_user.id
 
     respond_to do |format|
       if @evento.save
@@ -41,7 +47,7 @@ class EventosController < ApplicationController
   # PATCH/PUT /eventos/1.json
   def update
     respond_to do |format|
-      if @evento.update(evento_params)
+      if @evento.update(evento_params) and @evento.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @evento, notice: 'Evento was successfully updated.' }
         format.json { render :show, status: :ok, location: @evento }
       else
@@ -54,8 +60,8 @@ class EventosController < ApplicationController
   # DELETE /eventos/1
   # DELETE /eventos/1.json
   def destroy
-    if @evento.update_attributes(:activo => false)
-      format.html { redirect_to eventos_url, notice: 'el evento ha sido eliminado correctamente.' }
+    if @evento.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to eventos_url
     else
       format.html { render :edit }
       format.json { render json: @evento.errors, status: :unprocessable_entity }

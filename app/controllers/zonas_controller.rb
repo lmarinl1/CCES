@@ -4,7 +4,11 @@ class ZonasController < ApplicationController
   # GET /zonas
   # GET /zonas.json
   def index
-    @zonas = Zona.where(activo: true)
+    if current_user.id == 1 then
+      @zonas = Zona.all
+    else
+      @zonas = Zona.where(activo: true)
+    end
   end
 
   # GET /zonas/1
@@ -25,6 +29,8 @@ class ZonasController < ApplicationController
   # POST /zonas.json
   def create
     @zona = Zona.new(zona_params)
+    @zona.creador = current_user.id
+    @zona.modificador = current_user.id
 
     respond_to do |format|
       if @zona.save
@@ -41,7 +47,7 @@ class ZonasController < ApplicationController
   # PATCH/PUT /zonas/1.json
   def update
     respond_to do |format|
-      if @zona.update(zona_params)
+      if @zona.update(zona_params) and @zona.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @zona, notice: 'Zona was successfully updated.' }
         format.json { render :show, status: :ok, location: @zona }
       else
@@ -54,8 +60,8 @@ class ZonasController < ApplicationController
   # DELETE /zonas/1
   # DELETE /zonas/1.json
   def destroy
-    if @zona.update_attributes(:activo => false)
-      format.html { redirect_to zonas_url, notice: 'La zona ha sido eliminada correctamente.' }
+    if @zona.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to zonas_url
     else
       format.html { render :edit }
       format.json { render json: @zona.errors, status: :unprocessable_entity }

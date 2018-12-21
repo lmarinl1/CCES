@@ -4,7 +4,11 @@ class AportesController < ApplicationController
   # GET /aportes
   # GET /aportes.json
   def index
-    @aportes = Aporte.where(activo: true)
+    if current_user.id == 1 then
+      @aportes = Aporte.all
+    else
+      @aportes = Aporte.where(activo: true)
+    end
   end
 
   # GET /aportes/1
@@ -25,6 +29,8 @@ class AportesController < ApplicationController
   # POST /aportes.json
   def create
     @aporte = Aporte.new(aporte_params)
+    @aporte.creador = current_user.id
+    @aporte.modificador = current_user.id
 
     respond_to do |format|
       if @aporte.save
@@ -41,7 +47,7 @@ class AportesController < ApplicationController
   # PATCH/PUT /aportes/1.json
   def update
     respond_to do |format|
-      if @aporte.update(aporte_params)
+      if @aporte.update(aporte_params) and @aporte.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @aporte, notice: 'Aporte was successfully updated.' }
         format.json { render :show, status: :ok, location: @aporte }
       else
@@ -54,8 +60,8 @@ class AportesController < ApplicationController
   # DELETE /aportes/1
   # DELETE /aportes/1.json
   def destroy
-    if @aporte.update_attributes(:activo => false)
-      format.html { redirect_to aportes_url, notice: 'El aporte ha sido eliminado correctamente.' }
+    if @aporte.update_attributes(:activo => false,:modificador => current_user.id)
+      redirect_to aportes_url
     else
       format.html { render :edit }
       format.json { render json: @aporte.errors, status: :unprocessable_entity }

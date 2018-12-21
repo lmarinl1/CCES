@@ -34,7 +34,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<%= estefans_path %>">
               <i class="fa fa-user-o">
-                <span class="badge badge-danger"><%= Estefan.where(activo: true).length %></span>
+                <span class="badge badge-danger"><%= (Estefan.where(activo: true).length)+(Voluntario.where(activo: true).length)-1 %></span>
               </i>
               Este-Fans
             </a>

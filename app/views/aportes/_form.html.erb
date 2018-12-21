@@ -10,20 +10,9 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= form.label :activo %>
-    <%= form.check_box :activo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :modificador %>
-    <%= form.number_field :modificador %>
-  </div>
-
-  <div class="field">
-    <%= form.label :creador %>
-    <%= form.number_field :creador %>
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
   </div>
 
   <div class="field">
@@ -31,10 +20,12 @@
     <%= form.text_area :descripcion %>
   </div>
 
+  <% if current_user.id == 1 %>
   <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre %>
+    <%= form.label :activo %>
+    <%= form.check_box :activo %>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

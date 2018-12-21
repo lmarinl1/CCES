@@ -4,7 +4,11 @@ class MunicipiosController < ApplicationController
   # GET /municipios
   # GET /municipios.json
   def index
-    @municipios = Municipio.where(activo: true)
+    if current_user.id == 1 then
+      @municipios = Municipio.all
+    else
+      @municipios = Municipio.where(activo: true)
+    end
   end
 
   # GET /municipios/1
@@ -25,6 +29,8 @@ class MunicipiosController < ApplicationController
   # POST /municipios.json
   def create
     @municipio = Municipio.new(municipio_params)
+    @municipio.creador = current_user.id
+    @municipio.modificador = current_user.id
 
     respond_to do |format|
       if @municipio.save
@@ -41,7 +47,7 @@ class MunicipiosController < ApplicationController
   # PATCH/PUT /municipios/1.json
   def update
     respond_to do |format|
-      if @municipio.update(municipio_params)
+      if @municipio.update(municipio_params) and @municipio.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @municipio, notice: 'Municipio was successfully updated.' }
         format.json { render :show, status: :ok, location: @municipio }
       else
@@ -54,8 +60,8 @@ class MunicipiosController < ApplicationController
   # DELETE /municipios/1
   # DELETE /municipios/1.json
   def destroy
-    if @municipio.update_attributes(:activo => false)
-      format.html { redirect_to municipios_url, notice: 'el municipio ha sido eliminado correctamente.' }
+    if @municipio.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to municipios_url
     else
       format.html { render :edit }
       format.json { render json: @municipio.errors, status: :unprocessable_entity }

@@ -4,7 +4,11 @@ class EstefansController < ApplicationController
   # GET /estefans
   # GET /estefans.json
   def index
-    @estefans = Estefan.where(activo: true)
+    if current_user.id == 1 then
+      @estefans = Estefan.all
+    else
+      @estefans = Estefan.where(activo: true)
+    end
   end
 
   # GET /estefans/1
@@ -25,9 +29,12 @@ class EstefansController < ApplicationController
   # POST /estefans.json
   def create
     @estefan = Estefan.new(estefan_params)
+    @estefan.creador = current_user.id
+    @estefan.modificador = current_user.id
+    @user = create_user(@estefan.email)
 
     respond_to do |format|
-      if @estefan.save
+      if @estefan.save and @user.save
         format.html { redirect_to @estefan, notice: 'Estefan was successfully created.' }
         format.json { render :show, status: :created, location: @estefan }
       else
@@ -41,7 +48,7 @@ class EstefansController < ApplicationController
   # PATCH/PUT /estefans/1.json
   def update
     respond_to do |format|
-      if @estefan.update(estefan_params)
+      if @estefan.update(estefan_params) and @estefan.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @estefan, notice: 'Estefan was successfully updated.' }
         format.json { render :show, status: :ok, location: @estefan }
       else
@@ -54,8 +61,8 @@ class EstefansController < ApplicationController
   # DELETE /estefans/1
   # DELETE /estefans/1.json
   def destroy
-    if @estefan.update_attributes(:activo => false)
-      format.html { redirect_to estefans_url, notice: 'El usuario ha sido eliminado correctamente' }
+    if @estefan.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to estefans_url
     else
       format.html { render :edit }
       format.json { render json: @estefan.errors, status: :unprocessable_entity }
@@ -71,5 +78,12 @@ class EstefansController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def estefan_params
       params.require(:estefan).permit(:cedula, :nombre, :apellido, :nacimento, :cargo, :email, :creador, :activo, :modificador, :cel, :zona, :municipio, :instagram, :facebook, :twitter, :whatsapp, :descripcion, :sexo, :puntov)
+    end
+
+    def create_user(email)
+      user = User.new
+      user.email = email
+      user.password = '123456'
+      return user
     end
 end

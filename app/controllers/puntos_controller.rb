@@ -4,7 +4,11 @@ class PuntosController < ApplicationController
   # GET /puntos
   # GET /puntos.json
   def index
-    @puntos = Punto.where(activo: true)
+    if current_user.id == 1 then
+      @puntos = Punto.all
+    else
+      @puntos = Punto.where(activo: true)
+    end
   end
 
   # GET /puntos/1
@@ -25,6 +29,8 @@ class PuntosController < ApplicationController
   # POST /puntos.json
   def create
     @punto = Punto.new(punto_params)
+    @punto.creador = current_user.id
+    @punto.modificador = current_user.id
 
     respond_to do |format|
       if @punto.save
@@ -41,7 +47,7 @@ class PuntosController < ApplicationController
   # PATCH/PUT /puntos/1.json
   def update
     respond_to do |format|
-      if @punto.update(punto_params)
+      if @punto.update(punto_params) and @punto.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @punto, notice: 'Punto was successfully updated.' }
         format.json { render :show, status: :ok, location: @punto }
       else
@@ -54,8 +60,8 @@ class PuntosController < ApplicationController
   # DELETE /puntos/1
   # DELETE /puntos/1.json
   def destroy
-    if @punto.update_attributes(:activo => false)
-      format.html { redirect_to puntos_url, notice: 'La calificacion ha sido eliminada correctamente.' }
+    if @punto.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to puntos_url
     else
       format.html { render :edit }
       format.json { render json: @punto.errors, status: :unprocessable_entity }

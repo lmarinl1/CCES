@@ -4,7 +4,11 @@ class VoluntariosController < ApplicationController
   # GET /voluntarios
   # GET /voluntarios.json
   def index
-    @voluntarios = Voluntario.where(activo: true)
+    if current_user.id ==  1 then
+      @voluntarios = Voluntario.all
+    else
+      @voluntarios = Voluntario.where(activo: true)
+    end
   end
 
   # GET /voluntarios/1
@@ -25,6 +29,8 @@ class VoluntariosController < ApplicationController
   # POST /voluntarios.json
   def create
     @voluntario = Voluntario.new(voluntario_params)
+    @voluntario.creador = current_user.id
+    @voluntario.modificador = current_user.id
 
     respond_to do |format|
       if @voluntario.save
@@ -41,7 +47,7 @@ class VoluntariosController < ApplicationController
   # PATCH/PUT /voluntarios/1.json
   def update
     respond_to do |format|
-      if @voluntario.update(voluntario_params)
+      if @voluntario.update(voluntario_params) and @voluntario.update_attributes(:modificador => current_user.id)
         format.html { redirect_to @voluntario, notice: 'Voluntario was successfully updated.' }
         format.json { render :show, status: :ok, location: @voluntario }
       else
@@ -54,8 +60,8 @@ class VoluntariosController < ApplicationController
   # DELETE /voluntarios/1
   # DELETE /voluntarios/1.json
   def destroy
-    if @voluntario.update_attributes(:activo => false)
-      format.html { redirect_to voluntarios_url, notice: 'El voluntario ha sido eliminado correctamente.' }
+    if @voluntario.update_attributes(:activo => false, :modificador => current_user.id)
+      redirect_to voluntarios_url
     else
       format.html { render :edit }
       format.json { render json: @voluntario.errors, status: :unprocessable_entity }
