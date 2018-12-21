@@ -72,3 +72,24 @@ lista_zonas = [
 lista_zonas.each do |nombre, map|
   Zona.create(nombre: nombre, municipio: 1, modificador:1, creador:1, lmap: map)
 end
+
+# Puntos de votacion
+lista_puntosv = [
+  ['I.E. RAFAEL J. MEJIA','KR 45 # 77 C SUR - 47',25,4562,4834],
+  ['COL PADRE RAMON ARCILA R',	'CALLE 70 SUR No 46-80',	18,	4155,	2543],
+  ['COL EL CARMELO PRIMARIA',	'CLL 70 SUR No 43B-32',	22,	4184,	3952],
+  ['I.E. PRIMITIVO LEAL LA DOCTORA',	'CLL 75 SUR # 33 53',	17,	3478,	2773],
+  ['IE JOSE FELIX DE RESTREPO',	'CRA 46B No 76SUR -17',	29,	5756,	5149],
+  ['IE CONCEJO DE SABANETA',	',CRA 42 No 61 SUR -12',	21,	4462,	3299],
+  ['CTRO PARA EL ADULTO MAYOR CAITES',	'CARRERA 46B No 77 SUR-90',	22,	4667,	3482],
+  ['BIBLIOTECA MUNICIPAL',	'CRA 45 No 72 SUR -25',	0,	0,	0],
+  ['IE MARIA MEDIADORA',		'CLL 50 SUR No 43A-80',	19,	4011,	2911],
+  ['PLESBITERO ANTONIO BAENA SALAZAR',	'CLL 82 SUR No 32-68',	0,	0,	0],
+  ['CASA DE LA CULTURA LA BARQUEREÑA',	'CLL 68 SUR # 42 - 40',	14,	1825,	3206],
+  ['PARQUE DE LOS 4 ELEMENTOS',	'CLL 66 SUR No 43C-50',	0,	0,	0],
+  ['GIMNASIO CAMPESTRE LOS ALCAZARES',	'CLL 63 SUR No 41-05',	7,	1182,	1383]
+]
+
+lista_puntosv.each do |nombre,direccion,nromesas,hombres,mujeres|
+  PuntoV.create(nombre: nombre, zona: 1,creador:1,modificador:1,direccion: direccion,nromesas: nromesas, mujeres: mujeres,hombres: hombres)
+end
