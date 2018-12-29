@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark nav-fill">
       <div class="col-sm-4">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,21 +62,22 @@
 
         <% #final %>
         <form class="form-inline my-2 my-lg-0">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-               <%= current_user.email %> &nbsp
-              </a>
-              <div class="dropdown-menu">
-                <%= link_to "Mi Perfil", '#', class:"dropdown-item", :remote=>true %>
-                <%= link_to "Salir", destroy_user_session_path, :method=>:delete, class:"dropdown-item"%>
-              </div>
-            </li>
-          </ul>
-          </form>
-        </div>
-        <% end %>
+                 <%= current_user.email %> &nbsp
+                </a>
+                <div class="dropdown-menu">
+                  <%= link_to "Mi Perfil", '#', class:"dropdown-item", :remote=>true %>
+                  <%= link_to "Salir", destroy_user_session_path, :method=>:delete, class:"dropdown-item"%>
+                </div>
+              </li>
+            </ul>
+            </form>
+          </div>
+          <% end %>
+      </div>
     </nav>
     <div class="container">
 
