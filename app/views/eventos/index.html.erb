@@ -2,9 +2,9 @@
 
 
 <div class="tab">
- <button class="tablinks" onclick="openCity(event, 'Eventos') ">Eventos</button>
- <button class="tablinks" onclick="openCity(event, 'Empresas')">Empresas</button>
- <button class="tablinks" onclick="openCity(event, 'Universidades')">Universidades</button>
+ <button class="tablinks" onclick="openCity(event, 'Eventos')">Eventos</button>
+ <%= link_to empresas_path  do %> <button class="tablinks" >Empresas</button> <%end%> 
+ <%= link_to universidads_path  do %> <button class="tablinks">Universidades</button><%end%> 
 </div>
 
 <div id="Eventos" class="tabcontent">
@@ -43,18 +43,7 @@
       <% end %>
     </tbody>
   </table>
-
   <br>
-
-  <%= link_to 'New Evento', new_evento_path %>
-</div>
-
-<div id="Empresas" class="tabcontent" style="display:none">
- <h3>Paris</h3>
- <p>Paris is the capital of France.</p>
-</div>
-
-<div id="Universidades" class="tabcontent" style="display:none">
- <h3>Tokyo</h3>
- <p>Tokyo is the capital of Japan.</p>
+  <%= link_to 'New Evento', new_evento_path, :remote=>true %>
+  <div id="new_evento" style="display: none;"></div>
 </div>

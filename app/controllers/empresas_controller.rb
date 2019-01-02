@@ -19,6 +19,18 @@ class EmpresasController < ApplicationController
   # GET /empresas/new
   def new
     @empresa = Empresa.new
+    if current_user.id == 1 then
+      ms = Municipio.all
+    else
+      ms = Municipio.where(activo: true)
+    end
+    @municipios = []
+    ms.each do |m|
+      @municipios.push([m.nombre,m.id])
+    end
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /empresas/1/edit

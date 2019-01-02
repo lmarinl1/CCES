@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DataManagement</title>
+    <link rel="shortcut icon" href="<%= asset_path 'icons/png/database-3.png' %>"/>
+    <title>SysCCES</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +13,10 @@
   <body>
     <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark nav-fill">
       <div class="col-sm-4">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="<%= eventos_path %>">
+        <img src="<%= asset_path 'icons/png/database-3.png' %>"  width="50" height="50" class="d-inline-block align-top" alt="">
+        SysCCES
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -83,6 +87,11 @@
 
       <%= yield %>
 
+      <footer>
+        <div>Icons made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"         title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"        title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+      </footer>
     </div>
   </body>
+  <br>
+ 
 </html>

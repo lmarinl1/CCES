@@ -19,6 +19,18 @@ class EventosController < ApplicationController
   # GET /eventos/new
   def new
     @evento = Evento.new
+    if current_user.id == 1 then
+      zs = Zona.all
+    else
+      zs = Zona.where(activo: true)
+    end
+    @zonas = []
+    zs.each do |z|
+      @zonas.push([z.nombre,z.id])
+    end
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /eventos/1/edit

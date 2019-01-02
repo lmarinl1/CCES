@@ -1,51 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Universidads</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Municipio</th>
-      <th>Activo</th>
-      <th>Modificador</th>
-      <th>Creador</th>
-      <th>Descripcion</th>
-      <th>Nombre</th>
-      <th>Nit</th>
-      <th>Nroestudiantes</th>
-      <th>Direccion</th>
-      <th>Facebook</th>
-      <th>Twitter</th>
-      <th>Instagram</th>
-      <th>Web</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="tab">
+ <%= link_to eventos_path  do %> <button class="tablinks" >Eventos</button> <%end%> 
+ <%= link_to empresas_path  do %> <button class="tablinks">Empresas</button><%end%>
+ <button class="tablinks" onclick="openCity(event, 'Universidades')">Universidades</button> 
+</div>
 
-  <tbody>
-    <% @universidads.each do |universidad| %>
+<div id="Universidades" class="tabcontent">
+
+  <h1>Universidades</h1>
+
+  <table>
+    <thead>
       <tr>
-        <td><%= universidad.municipio %></td>
-        <td><%= universidad.activo %></td>
-        <td><%= universidad.modificador %></td>
-        <td><%= universidad.creador %></td>
-        <td><%= universidad.descripcion %></td>
-        <td><%= universidad.nombre %></td>
-        <td><%= universidad.nit %></td>
-        <td><%= universidad.nroEstudiantes %></td>
-        <td><%= universidad.direccion %></td>
-        <td><%= universidad.facebook %></td>
-        <td><%= universidad.twitter %></td>
-        <td><%= universidad.instagram %></td>
-        <td><%= universidad.web %></td>
-        <td><%= link_to 'Show', universidad %></td>
-        <td><%= link_to 'Edit', edit_universidad_path(universidad) %></td>
-        <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Municipio</th>
+        <th>Activo</th>
+        <th>Modificador</th>
+        <th>Creador</th>
+        <th>Descripcion</th>
+        <th>Nombre</th>
+        <th>Nit</th>
+        <th>Nroestudiantes</th>
+        <th>Direccion</th>
+        <th>Facebook</th>
+        <th>Twitter</th>
+        <th>Instagram</th>
+        <th>Web</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @universidads.each do |universidad| %>
+        <tr>
+          <td><%= universidad.municipio %></td>
+          <td><%= universidad.activo %></td>
+          <td><%= universidad.modificador %></td>
+          <td><%= universidad.creador %></td>
+          <td><%= universidad.descripcion %></td>
+          <td><%= universidad.nombre %></td>
+          <td><%= universidad.nit %></td>
+          <td><%= universidad.nroEstudiantes %></td>
+          <td><%= universidad.direccion %></td>
+          <td><%= universidad.facebook %></td>
+          <td><%= universidad.twitter %></td>
+          <td><%= universidad.instagram %></td>
+          <td><%= universidad.web %></td>
+          <td><%= link_to 'Show', universidad %></td>
+          <td><%= link_to 'Edit', edit_universidad_path(universidad) %></td>
+          <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Universidad', new_universidad_path %>
+  <br>
+
+  <%= link_to 'New Universidad', new_universidad_path %>
+</div>
