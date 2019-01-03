@@ -19,6 +19,42 @@ class VoluntariosController < ApplicationController
   # GET /voluntarios/new
   def new
     @voluntario = Voluntario.new
+    if current_user.id == 1 then
+      ms = Municipio.all
+      zs = Zona.all
+      pv = PuntoV.all
+      em = Empresa.all 
+      un = Universidad.all
+    else
+      ms = Municipio.where(activo: true)
+      zs = Zona.where(activo: true)
+      pv = PuntoV.where(activo: true)
+      em = Empresa.where(activo: true) 
+      un = Universidad.where(activo: true)
+    end
+    @municipios = [['Sin Seleccionar',(-1).to_int]]
+    ms.each do |m|
+      @municipios.push([m.nombre,m.id])
+    end
+    @zonas = [['Sin Seleccionar',(-1).to_int]]
+    zs.each do |z|
+      @zonas.push([z.nombre,z.id])
+    end
+    @puntovs = [['Sin Seleccionar',(-1).to_int]]
+    pv.each do |p|
+      @puntovs.push([p.nombre,p.id])
+    end
+    @empresas = [['Sin Seleccionar',(-1).to_int]]
+    em.each do |e|
+      @empresas.push([e.nombre,e.id])
+    end
+    @universidads = [['Sin Seleccionar',(-1).to_int]]
+    un.each do |u|
+      @universidads.push([u.nombre,u.id])
+    end
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /voluntarios/1/edit

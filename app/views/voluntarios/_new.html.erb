@@ -1,0 +1,202 @@
+<!-- Venatana Modal -->
+<div class="modal fade" id="modal_voluntario" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			
+			<!--Contenido Modal-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="col-sm-3">
+						<h5><img src="<%= asset_path 'icons/png/file.png'%>"  width="30" height="30" class="d-inline-block align-top" alt="">
+						SysCCES</h5>
+					</div>
+
+					<h4 class="modal-title" id="modalLabel">Crear Nuevo Voluntario</h4>
+
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<!-- Formulario -->
+					<%= form_for @voluntario, :remote =>true do |f| %>
+						
+						<!-- Control de errores -->
+						<% if @voluntario.errors.any? %>
+							<div id="error_explanation">
+								<h2><%= pluralize(@voluntario.errors.count, "error") %> No se permite crear este Voluntario: </h2>
+
+								<ul>
+									<% @voluntario.error.full_messages.each do |message| %>
+										<li><%= message %></li>
+									<% end %>
+								</ul>
+							</div>
+						<% end %>
+
+						<h4> Datos personales </h4>
+						<div class="row">
+							<div class="col-sm-1"></div>
+
+							<div class="col-sm-5">
+								<div class="form-group">
+									<label for="nombre">Nombre*:</label>
+									<%= f.text_field :nombre, class: "form-control input-lg", placeholder:"Nombre", :required => true, oninvalid: "this.setCustomValidity('Nombre')", oninput: "setCustomValidity('')"%>
+								</div>
+								<div class="form-group">
+									<label for="cedula">Cédula*:</label>
+									<%= f.number_field :cedula, class: "form-control input-lg", placeholder:"Nro Cédula", :required => true, oninvalid: "this.setCustomValidity('Cédula')", oninput: "setCustomValidity('')"%>
+								</div>
+								<div class="form-group">
+									<label for="municipio">Municipio*:</label><br>
+									<%= f.select(:municipio, @municipios, :required => true, oninvalid: "this.serCustomVality('Municipio')") %>	
+								</div>
+								<div class="form-group">
+									<label for="nombre">Dirección:</label>
+									<%= f.text_field :direccion, class: "form-control input-lg", placeholder:"Dirección", :required => false, oninvalid: "this.setCustomValidity('Dirección')", oninput: "setCustomValidity('')"%>	
+								</div>
+								<div class="form-group">
+									<label for="perfil">Tipo de perfil*:</label>
+									<%= f.select(:perfil, [['Estudiante'],['Independiente'],['Empleado'],['Am@ de Casa'],['Otro']], :required => true, oninvalid: "this.serCustomVality('Perfil')") %>	
+								</div>
+							</div>
+
+							<div class="col-sm-5">
+								<div class="form-group">
+									<label for="apellido">Apellidos*:</label>
+									<%= f.text_field :apellido, class: "form-control input-lg", placeholder:"Apellidos", :required => true, oninvalid: "this.setCustomValidity('Apellido')", oninput: "setCustomValidity('')"%>	
+								</div>
+								<div class="form-group">
+									<label for="fechaI"> Fecha de Nacimiento:</label><br>
+									<%= f.date_select :nacimiento, :required => false %>
+								</div>
+								<div class="form-group">
+									<label for="nombre">Zona:</label><br>
+									<%= f.select(:zona, @zonas, :required => false, oninvalid: "this.serCustomVality('Zona')") %>	
+								</div>
+								<div class="form-group">
+									<label for="sexo">Sexo:</label><br>
+									<%= f.radio_button :sexo, 'F' %> Masculino <br>
+									<%= f.radio_button :sexo, 'M' %> Femenino <br>
+									<%= f.radio_button :sexo, 'O' %> Otro <br>
+								</div>
+							</div>
+
+							<div class="col-sm-1"></div>
+						</div>
+
+
+
+						<br><br>
+						<h4> Datos de contacto </h4>
+						<div class="row">
+							<div class="col-sm-1"></div>
+
+							<div class="col-sm-5">
+								<div class="form-group">
+									<label for="facebook">Facebook:</label>
+									<%= f.text_field :facebook, class: "form-control input-lg", placeholder:"https://www.facebook.com/luismiguel.marinloaiza", :required =>false, oninvalid: "this.setCustomValidity('Enlace al perfil')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="web">Whatsapp:</label>
+									<%= f.text_field :whatsapp, class: "form-control input-lg", placeholder:"3128705570", :required =>false, oninvalid: "this.setCustomValidity('Celular de Whatsapp')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="twitter">Twitter:</label>
+									<%= f.text_field :twitter, class: "form-control input-lg", placeholder:"https://twitter.com/MiguelMarinLoa1", :required =>false, oninvalid: "this.setCustomValidity('Enlace al perfil')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="instagram">Instagram:</label>
+									<%= f.text_field :instagram, class: "form-control input-lg", placeholder:"https://www.instagram.com/mariinmiguel", :required =>false, oninvalid: "this.setCustomValidity('Enlace al perfil')", oninput: "setCustomValidity('')"%>	
+								</div>
+							</div>
+
+							<div class="col-sm-5">
+								<div class="form-group">
+									<label for="email">E-mail*:</label>
+									<%= f.email_field :email, class: "form-control input-lg", placeholder:"lmarinl1@outlook.com", :required =>true, oninvalid: "this.setCustomValidity('Dirección E-mail')", oninput: "setCustomValidity('')"%>	
+								</div>
+								<div class="form-group">
+									<label for="celular">Celular:</label>
+									<%= f.number_field :cel, class: "form-control input-lg", placeholder:"Celular", :required => false, oninvalid: "this.setCustomValidity('Nro Celular')", oninput: "setCustomValidity('')"%>
+								</div>
+								<h4> Datos Electorales </h4>
+								<div class="form-group">
+									<label for="puntov">Punto de Votación:</label><br>
+									<%= f.select(:puntov, @puntovs, :required => false, oninvalid: "this.serCustomVality('Lugar de votación')") %>	
+								</div>
+								<div class="form-group">
+									<label for="votos">Cuantos votos?</label>
+									<%= f.number_field :votos, class: "form-control input-lg", placeholder:"Votos", :required => false, oninvalid: "this.setCustomValidity('Estimación de votos que puede aportar')", oninput: "setCustomValidity('')"%>
+								</div>
+							</div>
+
+							<div class="col-sm-1"></div>
+						</div>
+
+
+						<br><br>
+						<div class="row"> 
+							<div class="col-sm-1"></div>
+
+							<div class="col-sm-5">
+								<h4> Empresa </h4>
+								<div class="form-group">
+									<label for="empresa">Empresa:</label><br>
+									<%= f.select(:empresa, @empresas, :required => false, oninvalid: "this.serCustomVality('Empresa')") %>	
+								</div>
+								<div class="form-group">
+									<label for="cargo">Cargo:</label>
+									<%= f.text_field :cargo, class: "form-control input-lg", placeholder:"Cargo", :required => false, oninvalid: "this.setCustomValidity('Cargo')", oninput: "setCustomValidity('')"%>	
+								</div>
+							</div>
+
+							<div class="col-sm-5">
+								<h4> Universidad </h4>
+								<div class="form-group">
+									<label for="universidad">Universidad:</label><br>
+									<%= f.select(:universidad, @universidads, :required => false, oninvalid: "this.serCustomVality('Universidad')") %>	
+								</div>
+								<div class="form-group">
+									<label for="carrera">Carrera:</label>
+									<%= f.text_field :carrera, class: "form-control input-lg", placeholder:"Carrera", :required => false, oninvalid: "this.setCustomValidity('Programa académico')", oninput: "setCustomValidity('')"%>	
+								</div>
+							</div>
+
+							<div class="col-sm-1"></div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-1"></div>
+
+							<div class="col-sm-10">
+								<div class="form-group">
+							      <label for="descripcion">Descripción:</label>
+							      <%= f.text_area :descripcion, class: "form-control input-lg", placeholder:"Descripción", :required => false, oninvalid: "this.setCustomValidity('Descripción)", oninput: "setCustomValidity('')"%>	
+							    </div>
+								  <% if current_user.id == 1 then %>
+								  	<div class="form-group">
+										<label for="fechaI"> Estado: </label><br>
+										<%= f.check_box :activo %>
+									</div>
+								  <% end %>
+							</div>
+
+							<div class="col-sm-1"></div>
+						</div>
+
+				
+						<div class="modal-footer">
+							<%= f.submit class: "btn btn-primary btn-log bton-block", value:"Guardar"%>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+						</div>
+						
+					<% end %>	
+				</div>
+			</div>
+		</div>
+	</div>

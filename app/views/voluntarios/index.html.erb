@@ -2,8 +2,8 @@
  
 
 <div class="tab">
- <button class="tablinks" onclick="openCity(event, 'Voluntarios')">Voluntarios</button>
- <%= link_to estefans_path  do %> <button class="tablinks">Estefans</button><%end%> 
+ <button class="tablinks" onclick="openCity(event, 'Voluntarios')"><img src="<%= asset_path 'icons/png/file-14.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Voluntarios</button>
+ <%= link_to estefans_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/user-43.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Estefans</button><%end%> 
 </div>
 
 <div id="Voluntarios" class="tabcontent">
@@ -80,5 +80,6 @@
 
   <br>
 
-  <%= link_to 'New Voluntario', new_voluntario_path %>
+  <%= link_to 'New Voluntario', new_voluntario_path, :remote=>true %>
+  <div id="new_voluntario" style="display: none;"></div>
 </div>

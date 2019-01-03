@@ -14,9 +14,9 @@ Estefan.create(cedula: '0000000000', nombre: 'cces', apellido: 'equipo', nacimen
 # Municipios
 lista_municipios = [
   ['Sabaneta','1','https://www.sabaneta.gov.co/'],
-  ['Medellin','ESP','https://www.medellin.gov.co'],
+  ['Medellín','ESP','https://www.medellin.gov.co'],
   ['Bello','1','http://www.bello.gov.co/'],
-  ['Itagui','1','https://www.itagui.gov.co/'],
+  ['Itagüí','1','https://www.itagui.gov.co/'],
   ['Envigado','1','https://www.envigado.gov.co/'],
   ['Caldas','3','https://www.caldasantioquia.gov.co/'],
   ['Copacabana','3','http://www.copacabana.gov.co'],

@@ -2,9 +2,9 @@
 
 
 <div class="tab">
- <button class="tablinks" onclick="openCity(event, 'Eventos')">Eventos</button>
- <%= link_to empresas_path  do %> <button class="tablinks" >Empresas</button> <%end%> 
- <%= link_to universidads_path  do %> <button class="tablinks">Universidades</button><%end%> 
+ <button class="tablinks" onclick="openCity(event, 'Eventos')"><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button>
+ <%= link_to empresas_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button> <%end%> 
+ <%= link_to universidads_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button><%end%> 
 </div>
 
 <div id="Eventos" class="tabcontent">
