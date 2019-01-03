@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+ 
 
 <div class="tab">
  <%= link_to eventos_path  do %> <button class="tablinks" >Eventos</button> <%end%> 
@@ -57,5 +57,6 @@
 
   <br>
 
-  <%= link_to 'New Universidad', new_universidad_path %>
+  <%= link_to 'New Universidad', new_universidad_path, :remote=>true %>
+  <div id="new_universidad" style="display: none;"></div>
 </div>

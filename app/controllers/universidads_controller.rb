@@ -19,6 +19,18 @@ class UniversidadsController < ApplicationController
   # GET /universidads/new
   def new
     @universidad = Universidad.new
+    if current_user.id == 1 then
+      ms = Municipio.all
+    else
+      ms = Municipio.where(activo: true)
+    end
+    @municipios = []
+    ms.each do |m|
+      @municipios.push([m.nombre,m.id])
+    end
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /universidads/1/edit

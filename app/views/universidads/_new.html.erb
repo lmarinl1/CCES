@@ -1,0 +1,120 @@
+<!-- Venatana Modal -->
+<div class="modal fade" id="modal_universidad" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			
+			<!--Contenido Modal-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="col-sm-3">
+						<img src="<%= asset_path 'icons/png/notebook.png'%>"  width="40" height="40" class="d-inline-block align-top" alt="">
+						SysCCES
+					</div>
+
+					<div class="col-sm-10"><h4 class="modal-title" id="modalLabel">Crear Nueva Universidad</h4></div>
+
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<!-- Formulario -->
+					<%= form_for @universidad, :remote =>true do |f| %>
+						
+						<!-- Control de errores -->
+						<% if @universidad.errors.any? %>
+							<div id="error_explanation">
+								<h2><%= pluralize(@universidad.errors.count, "error") %> No se permite crear esta Universidad: </h2>
+
+								<ul>
+									<% @universidad.error.full_messages.each do |message| %>
+										<li><%= message %></li>
+									<% end %>
+								</ul>
+							</div>
+						<% end %>
+
+						<div class="row">
+							<div class="col-sm-1">
+								
+							</div>
+
+
+							<div class="col-sm-10">
+								<div class="form-group">
+									<label for="nombre">Nombre*:</label>
+									<%= f.text_field :nombre, class: "form-control input-lg", placeholder:"Nombre", :required => true, oninvalid: "this.setCustomValidity('Nombre')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+
+								<div class="form-group">
+									<label for="nombre">Municipio:</label>
+									<%= f.select(:municipio, @municipios, :required =>false, oninvalid: "this.setCustomVality('Municipio')") %>	
+								</div>
+
+								<div class="form-group">
+									<label for="nit">NIT:</label>
+									<%= f.number_field :nit, class: "form-control", :required =>false, oninvalid: "this.setCustomValidity('Número de Identificación Tributaria')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="nombre">Dirección:</label>
+									<%= f.text_field :direccion, class: "form-control input-lg", placeholder:"Dirección", :required =>false, oninvalid: "this.setCustomValidity('Dirección')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="puntosDno">Cantidad de Estudiantes:</label>
+									<%= f.number_field :nroEstudiantes, class: "form-control", sise:"7",:required =>false, oninvalid: "this.setCustomValidity('Estimación de cantidad de empleados')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="facebook">Facebook:</label>
+									<%= f.text_field :facebook, class: "form-control input-lg", placeholder:"https://www.facebook.com/Unisabaneta.colombia/", :required =>false, oninvalid: "this.setCustomValidity('Enlace al perfil')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="web">Página Web Oficial:</label>
+									<%= f.text_field :web, class: "form-control input-lg", placeholder:"http://www.unisabaneta.edu.co/", :required =>false, oninvalid: "this.setCustomValidity('Enlace a la página web oficial')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="twitter">Twitter:</label>
+									<%= f.text_field :twitter, class: "form-control input-lg", placeholder:"https://twitter.com/unisabaneta?lang=es", :required =>false, oninvalid: "this.setCustomValidity('Enlace al perfil')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+									<label for="instagram">Instagram:</label>
+									<%= f.text_field :instagram, class: "form-control input-lg", placeholder:"https://www.instagram.com/unisabaneta/?hl=es", :required =>false, oninvalid: "this.setCustomValidity('Enlace al perfil')", oninput: "setCustomValidity('')"%>	
+								</div>
+
+								<div class="form-group">
+							      <label for="descripcion">Descripción:</label>
+							      <%= f.text_area :descripcion, class: "form-control input-lg", placeholder:"Descripción", :required => false, oninvalid: "this.setCustomValidity('Descripción)", oninput: "setCustomValidity('')"%>	
+							    </div>
+
+
+							  <% if current_user.id == 1 then %>
+							  	<div class="form-group">
+									<label for="fechaI"> Estado: </label><br>
+									<%= f.check_box :activo %>
+								</div>	
+							  <% end %>
+
+
+							</div>
+
+							<div class="col-sm-1">
+							
+							</div>
+						</div>
+				
+						<div class="modal-footer">
+							<%= f.submit class: "btn btn-primary btn-log bton-block", value:"Guardar"%>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+						</div>
+						
+					<% end %>	
+				</div>
+			</div>
+		</div>
+	</div>
