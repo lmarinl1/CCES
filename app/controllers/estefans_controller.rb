@@ -19,6 +19,30 @@ class EstefansController < ApplicationController
   # GET /estefans/new
   def new
     @estefan = Estefan.new
+    if current_user.id == 1 then
+      ms = Municipio.all
+      zs = Zona.all
+      pv = PuntoV.all
+    else
+      ms = Municipio.where(activo: true)
+      zs = Zona.where(activo: true)
+      pv = PuntoV.where(activo: true)
+    end
+    @municipios = [['Sin Seleccionar',(-1).to_int]]
+    ms.each do |m|
+      @municipios.push([m.nombre,m.id])
+    end
+    @zonas = [['Sin Seleccionar',(-1).to_int]]
+    zs.each do |z|
+      @zonas.push([z.nombre,z.id])
+    end
+    @puntovs = [['Sin Seleccionar',(-1).to_int]]
+    pv.each do |p|
+      @puntovs.push([p.nombre,p.id])
+    end
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /estefans/1/edit
