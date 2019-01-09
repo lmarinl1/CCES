@@ -19,6 +19,33 @@ class EmpresariosController < ApplicationController
   # GET /empresarios/new
   def new
     @empresario = Empresario.new
+    if current_user.id == 1 then
+      ms = Municipio.all
+      em = Empresa.all 
+      pv = PuntoV.all
+    else
+      ms = Municipio.where(activo: true)
+      em = Empresa.where(activo: true) 
+      pv = PuntoV.where(activo: true)
+    end
+    # municipio
+    @municipios = []
+    ms.each do |m|
+      @municipios.push([m.nombre,m.id])
+    end
+    # Empresa
+    @empresas = []
+    em.each do |e|
+      @empresas.push([e.nombre,e.id])
+    end
+    # PuntoV
+    @puntovs = []
+    pv.each do |p|
+      @puntovs.push([p.nombre,p.id])
+    end
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /empresarios/1/edit

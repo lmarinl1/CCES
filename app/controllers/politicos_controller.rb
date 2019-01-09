@@ -19,6 +19,42 @@ class PoliticosController < ApplicationController
   # GET /politicos/new
   def new
     @politico = Politico.new
+    if current_user.id == 1 then
+      ms = Municipio.all
+      pv = PuntoV.all
+    else
+      ms = Municipio.where(activo: true) 
+      pv = PuntoV.where(activo: true)
+    end
+    # municipio
+    @municipios = []
+    ms.each do |m|
+      @municipios.push([m.nombre,m.id])
+    end
+    # PuntoV
+    @puntovs = []
+    pv.each do |p|
+      @puntovs.push([p.nombre,p.id])
+    end
+    @partidos = [
+      ['Partido Centro Democrático'], 
+      ['Partido Liberal Colombiano'], 
+      ['Partido Conservador Colombiano'],
+      ['Partido Opción Ciudadana'], 
+      ['Partido Cambio Radical'], 
+      ['Partido Alianza Verde'], 
+      ['Partido Alianza Social Independiente ASI'], 
+      ['Partido Político MIRA'], 
+      ['Partido de la U'], 
+      ['Partido Polo Democrático Alternativo'], 
+      ['Partido Unión Patriótica'], 
+      ['Partido Somos'], 
+      ['Partido Fuerza Alternativa Revolucionaria del Común Farc'],
+      ['Otro']
+    ]
+    respond_to do |f|
+      f.js 
+    end
   end
 
   # GET /politicos/1/edit
