@@ -11,7 +11,8 @@
 
   <table>
     <thead>
-      <tr>
+      <tr></tr>
+        <th>Picture</th>
         <th>Municipio</th>
         <th>Activo</th>
         <th>Modificador</th>
@@ -43,6 +44,7 @@
     <tbody>
       <% @empresarios.each do |empresario| %>
         <tr>
+          <td><%= image_tag empresario.picture.medium.url, class: 'figure-img img-fluid rounded'%></td>
           <td><%= empresario.municipio %></td>
           <td><%= empresario.activo %></td>
           <td><%= empresario.modificador %></td>

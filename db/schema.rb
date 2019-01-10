@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_144406) do
+ActiveRecord::Schema.define(version: 2019_01_10_165605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.string "nombre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "empresarios", force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.string "cEmail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["email"], name: "index_empresarios_on_email", unique: true
   end
 
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.string "web"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "estefans", force: :cascade do |t|
@@ -95,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.integer "puntov"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["cedula"], name: "index_estefans_on_cedula", unique: true
     t.index ["email"], name: "index_estefans_on_email", unique: true
   end
@@ -110,6 +114,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.string "direccion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "municipios", force: :cascade do |t|
@@ -123,6 +128,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "politicos", force: :cascade do |t|
@@ -152,6 +158,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.string "cEmail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["email"], name: "index_politicos_on_email", unique: true
   end
 
@@ -169,6 +176,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.integer "mujeres"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "puntos", force: :cascade do |t|
@@ -199,6 +207,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.string "web"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "users", force: :cascade do |t|
@@ -241,6 +250,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.integer "votos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["cedula"], name: "index_voluntarios_on_cedula", unique: true
     t.index ["email"], name: "index_voluntarios_on_email", unique: true
   end
@@ -255,6 +265,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_144406) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
 end
