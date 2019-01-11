@@ -1,85 +1,86 @@
 <p id="notice"><%= notice %></p>
  
+<div class="row">
+  <div class="tab col-md-3">
+   <button class="tablinks" onclick="openCity(event, 'Empresarios')"><img src="<%= asset_path 'politics/png/002-group-1.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresarios</button>
+  </div>
 
-<div class="tab">
- <button class="tablinks" onclick="openCity(event, 'Empresarios')"><img src="<%= asset_path 'politics/png/002-group-1.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresarios</button>
-</div>
+  <div id="Empresarios" class="tab-content col-md-9">
 
-<div id="Empresarios" class="tabcontent">
+    <h1>Empresarios</h1>
 
-  <h1>Empresarios</h1>
-
-  <table>
-    <thead>
-      <tr></tr>
-        <th>Picture</th>
-        <th>Municipio</th>
-        <th>Activo</th>
-        <th>Modificador</th>
-        <th>Creador</th>
-        <th>Descripcion</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Cedula</th>
-        <th>Sexo</th>
-        <th>Empresa</th>
-        <th>Telefono</th>
-        <th>Celular</th>
-        <th>Email</th>
-        <th>Whatsapp</th>
-        <th>Instagram</th>
-        <th>Twitter</th>
-        <th>Facebook</th>
-        <th>Puntov</th>
-        <th>Cnombre</th>
-        <th>Ccel1</th>
-        <th>Ccel2</th>
-        <th>Ctel</th>
-        <th>Cwhatsapp</th>
-        <th>Cemail</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @empresarios.each do |empresario| %>
-        <tr>
-          <td><%= image_tag empresario.picture.medium.url, class: 'figure-img img-fluid rounded'%></td>
-          <td><%= empresario.municipio %></td>
-          <td><%= empresario.activo %></td>
-          <td><%= empresario.modificador %></td>
-          <td><%= empresario.creador %></td>
-          <td><%= empresario.descripcion %></td>
-          <td><%= empresario.nombre %></td>
-          <td><%= empresario.apellido %></td>
-          <td><%= empresario.cedula %></td>
-          <td><%= empresario.sexo %></td>
-          <td><%= empresario.empresa %></td>
-          <td><%= empresario.telefono %></td>
-          <td><%= empresario.celular %></td>
-          <td><%= empresario.email %></td>
-          <td><%= empresario.whatsapp %></td>
-          <td><%= empresario.instagram %></td>
-          <td><%= empresario.twitter %></td>
-          <td><%= empresario.facebook %></td>
-          <td><%= empresario.puntov %></td>
-          <td><%= empresario.cNombre %></td>
-          <td><%= empresario.cCel1 %></td>
-          <td><%= empresario.cCel2 %></td>
-          <td><%= empresario.cTel %></td>
-          <td><%= empresario.cWhatsapp %></td>
-          <td><%= empresario.cEmail %></td>
-          <td><%= link_to 'Show', empresario %></td>
-          <td><%= link_to 'Edit', edit_empresario_path(empresario) %></td>
-          <td><%= link_to 'Destroy', empresario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr></tr>
+          <th>Picture</th>
+          <th>Municipio</th>
+          <th>Activo</th>
+          <th>Modificador</th>
+          <th>Creador</th>
+          <th>Descripcion</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Cedula</th>
+          <th>Sexo</th>
+          <th>Empresa</th>
+          <th>Telefono</th>
+          <th>Celular</th>
+          <th>Email</th>
+          <th>Whatsapp</th>
+          <th>Instagram</th>
+          <th>Twitter</th>
+          <th>Facebook</th>
+          <th>Puntov</th>
+          <th>Cnombre</th>
+          <th>Ccel1</th>
+          <th>Ccel2</th>
+          <th>Ctel</th>
+          <th>Cwhatsapp</th>
+          <th>Cemail</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <br>
+      <tbody>
+        <% @empresarios.each do |empresario| %>
+          <tr>
+            <td><%= image_tag empresario.picture.medium.url, class: 'figure-img img-fluid rounded'%></td>
+            <td><%= empresario.municipio %></td>
+            <td><%= empresario.activo %></td>
+            <td><%= empresario.modificador %></td>
+            <td><%= empresario.creador %></td>
+            <td><%= empresario.descripcion %></td>
+            <td><%= empresario.nombre %></td>
+            <td><%= empresario.apellido %></td>
+            <td><%= empresario.cedula %></td>
+            <td><%= empresario.sexo %></td>
+            <td><%= empresario.empresa %></td>
+            <td><%= empresario.telefono %></td>
+            <td><%= empresario.celular %></td>
+            <td><%= empresario.email %></td>
+            <td><%= empresario.whatsapp %></td>
+            <td><%= empresario.instagram %></td>
+            <td><%= empresario.twitter %></td>
+            <td><%= empresario.facebook %></td>
+            <td><%= empresario.puntov %></td>
+            <td><%= empresario.cNombre %></td>
+            <td><%= empresario.cCel1 %></td>
+            <td><%= empresario.cCel2 %></td>
+            <td><%= empresario.cTel %></td>
+            <td><%= empresario.cWhatsapp %></td>
+            <td><%= empresario.cEmail %></td>
+            <td><%= link_to 'Show', empresario %></td>
+            <td><%= link_to 'Edit', edit_empresario_path(empresario) %></td>
+            <td><%= link_to 'Destroy', empresario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <%= link_to 'New Empresario', new_empresario_path, :remote=>true %>
-  <div id="new_empresario" style="display: none;"></div>
+    <br>
 
+    <%= link_to 'New Empresario', new_empresario_path, :remote=>true %>
+    <div id="new_empresario" style="display: none;"></div>
+
+  </div>
 </div>

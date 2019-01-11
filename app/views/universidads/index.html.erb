@@ -1,62 +1,64 @@
 <p id="notice"><%= notice %></p>
  
 
-<div class="tab">
- <%= link_to eventos_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button> <%end%> 
- <%= link_to empresas_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button><%end%>
- <button class="tablinks" onclick="openCity(event, 'Universidades')"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button> 
-</div>
+<div class="row">
+  <div class="tab col-md-3">
+   <%= link_to eventos_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button> <%end%> 
+   <%= link_to empresas_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button><%end%>
+   <button class="tablinks" onclick="openCity(event, 'Universidades')"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button> 
+  </div>
 
-<div id="Universidades" class="tabcontent">
+  <div id="Universidades" class="tab-content col-md-9">
 
-  <h1>Universidades</h1>
+    <h1>Universidades</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Municipio</th>
-        <th>Activo</th>
-        <th>Modificador</th>
-        <th>Creador</th>
-        <th>Descripcion</th>
-        <th>Nombre</th>
-        <th>Nit</th>
-        <th>Nroestudiantes</th>
-        <th>Direccion</th>
-        <th>Facebook</th>
-        <th>Twitter</th>
-        <th>Instagram</th>
-        <th>Web</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @universidads.each do |universidad| %>
+    <table class="table table-striped table-responsive">
+      <thead>
         <tr>
-          <td><%= universidad.municipio %></td>
-          <td><%= universidad.activo %></td>
-          <td><%= universidad.modificador %></td>
-          <td><%= universidad.creador %></td>
-          <td><%= universidad.descripcion %></td>
-          <td><%= universidad.nombre %></td>
-          <td><%= universidad.nit %></td>
-          <td><%= universidad.nroEstudiantes %></td>
-          <td><%= universidad.direccion %></td>
-          <td><%= universidad.facebook %></td>
-          <td><%= universidad.twitter %></td>
-          <td><%= universidad.instagram %></td>
-          <td><%= universidad.web %></td>
-          <td><%= link_to 'Show', universidad %></td>
-          <td><%= link_to 'Edit', edit_universidad_path(universidad) %></td>
-          <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Municipio</th>
+          <th>Activo</th>
+          <th>Modificador</th>
+          <th>Creador</th>
+          <th>Descripcion</th>
+          <th>Nombre</th>
+          <th>Nit</th>
+          <th>Nroestudiantes</th>
+          <th>Direccion</th>
+          <th>Facebook</th>
+          <th>Twitter</th>
+          <th>Instagram</th>
+          <th>Web</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <br>
+      <tbody>
+        <% @universidads.each do |universidad| %>
+          <tr>
+            <td><%= universidad.municipio %></td>
+            <td><%= universidad.activo %></td>
+            <td><%= universidad.modificador %></td>
+            <td><%= universidad.creador %></td>
+            <td><%= universidad.descripcion %></td>
+            <td><%= universidad.nombre %></td>
+            <td><%= universidad.nit %></td>
+            <td><%= universidad.nroEstudiantes %></td>
+            <td><%= universidad.direccion %></td>
+            <td><%= universidad.facebook %></td>
+            <td><%= universidad.twitter %></td>
+            <td><%= universidad.instagram %></td>
+            <td><%= universidad.web %></td>
+            <td><%= link_to 'Show', universidad %></td>
+            <td><%= link_to 'Edit', edit_universidad_path(universidad) %></td>
+            <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <%= link_to 'New Universidad', new_universidad_path, :remote=>true %>
-  <div id="new_universidad" style="display: none;"></div>
+    <br>
+
+    <%= link_to 'New Universidad', new_universidad_path, :remote=>true %>
+    <div id="new_universidad" style="display: none;"></div>
+  </div>
 </div>

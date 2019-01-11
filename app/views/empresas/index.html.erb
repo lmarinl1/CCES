@@ -1,62 +1,62 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row">
+  <div class="tab col-md-3">
+   <%= link_to eventos_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button> <%end%> 
+   <button class="tablinks" onclick="openCity(event, 'Empresas')"><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button>
+   <%= link_to universidads_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button><%end%> 
+  </div>
 
-<div class="tab">
- <%= link_to eventos_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button> <%end%> 
- <button class="tablinks" onclick="openCity(event, 'Empresas')"><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button>
- <%= link_to universidads_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button><%end%> 
-</div>
+  <div id="Empresas" class="tab-content col-md-9">
 
-<div id="Empresas" class="tabcontent">
+    <h1>Empresas</h1>
 
-  <h1>Empresas</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Municipio</th>
-        <th>Activo</th>
-        <th>Modificador</th>
-        <th>Creador</th>
-        <th>Descripcion</th>
-        <th>Nombre</th>
-        <th>Nit</th>
-        <th>Nroempleados</th>
-        <th>Direccion</th>
-        <th>Facebook</th>
-        <th>Twitter</th>
-        <th>Instagram</th>
-        <th>Web</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @empresas.each do |empresa| %>
+    <table class="table table-striped table-responsive">
+      <thead>
         <tr>
-          <td><%= empresa.municipio %></td>
-          <td><%= empresa.activo %></td>
-          <td><%= empresa.modificador %></td>
-          <td><%= empresa.creador %></td>
-          <td><%= empresa.descripcion %></td>
-          <td><%= empresa.nombre %></td>
-          <td><%= empresa.nit %></td>
-          <td><%= empresa.nroEmpleados %></td>
-          <td><%= empresa.direccion %></td>
-          <td><%= empresa.facebook %></td>
-          <td><%= empresa.twitter %></td>
-          <td><%= empresa.instagram %></td>
-          <td><%= empresa.web %></td>
-          <td><%= link_to 'Show', empresa %></td>
-          <td><%= link_to 'Edit', edit_empresa_path(empresa) %></td>
-          <td><%= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Municipio</th>
+          <th>Activo</th>
+          <th>Modificador</th>
+          <th>Creador</th>
+          <th>Descripcion</th>
+          <th>Nombre</th>
+          <th>Nit</th>
+          <th>Nroempleados</th>
+          <th>Direccion</th>
+          <th>Facebook</th>
+          <th>Twitter</th>
+          <th>Instagram</th>
+          <th>Web</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <br>
+      <tbody>
+        <% @empresas.each do |empresa| %>
+          <tr>
+            <td><%= empresa.municipio %></td>
+            <td><%= empresa.activo %></td>
+            <td><%= empresa.modificador %></td>
+            <td><%= empresa.creador %></td>
+            <td><%= empresa.descripcion %></td>
+            <td><%= empresa.nombre %></td>
+            <td><%= empresa.nit %></td>
+            <td><%= empresa.nroEmpleados %></td>
+            <td><%= empresa.direccion %></td>
+            <td><%= empresa.facebook %></td>
+            <td><%= empresa.twitter %></td>
+            <td><%= empresa.instagram %></td>
+            <td><%= empresa.web %></td>
+            <td><%= link_to 'Show', empresa %></td>
+            <td><%= link_to 'Edit', edit_empresa_path(empresa) %></td>
+            <td><%= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <%= link_to 'New Empresa', new_empresa_path, :remote=>true %>
-  <div id="new_empresa" style="display: none;"></div>
+
+    <%= link_to 'New Empresa', new_empresa_path, :remote=>true %>
+    <div id="new_empresa" style="display: none;"></div>
+  </div>
 </div>

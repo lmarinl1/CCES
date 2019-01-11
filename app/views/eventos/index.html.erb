@@ -1,49 +1,47 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row">
+  <div class="tab col-md-3">
+   <button class="tablinks" onclick="openCity(event, 'Eventos')"><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button>
+   <%= link_to empresas_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button> <%end%> 
+   <%= link_to universidads_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button><%end%> 
+  </div>
 
-<div class="tab">
- <button class="tablinks" onclick="openCity(event, 'Eventos')"><img src="<%= asset_path 'icons/png/calendar-23.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Eventos</button>
- <%= link_to empresas_path  do %> <button class="tablinks" ><img src="<%= asset_path 'icons/png/archive-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Empresas</button> <%end%> 
- <%= link_to universidads_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/notebook-3.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Universidades</button><%end%> 
-</div>
+  <div id="Eventos" class="tab-content col-md-9">
+    <h1>Eventos</h1>
 
-<div id="Eventos" class="tabcontent">
-  <h1>Eventos</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Zona</th>
-        <th>Activo</th>
-        <th>Fecha</th>
-        <th>Modificador</th>
-        <th>Creador</th>
-        <th>Descripcion</th>
-        <th>Nombre</th>
-        <th>Direccion</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @eventos.each do |evento| %>
+    <table class="table table-striped table-responsive">
+      <thead>
         <tr>
-          <td><%= evento.zona %></td>
-          <td><%= evento.activo %></td>
-          <td><%= evento.fecha %></td>
-          <td><%= evento.modificador %></td>
-          <td><%= evento.creador %></td>
-          <td><%= evento.descripcion %></td>
-          <td><%= evento.nombre %></td>
-          <td><%= evento.direccion %></td>
-          <td><%= link_to 'Show', evento %></td>
-          <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
-          <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Zona</th>
+          <th>Activo</th>
+          <th>Fecha</th>
+          <th>Descripcion</th>
+          <th>Nombre</th>
+          <th>Direccion</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= link_to 'New Evento', new_evento_path, :remote=>true %>
-  <div id="new_evento" style="display: none;"></div>
+      </thead>
+
+      <tbody>
+        <% @eventos.each do |evento| %>
+          <tr>
+            <td><%= evento.zona %></td>
+            <td><%= evento.activo %></td>
+            <td><%= evento.fecha %></td>
+            <td><%= evento.descripcion %></td>
+            <td><%= evento.nombre %></td>
+            <td><%= evento.direccion %></td>
+            <td><%= link_to 'Show', evento %></td>
+            <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
+            <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <%= link_to 'New Evento', new_evento_path, :remote=>true %>
+    <div id="new_evento" style="display: none;"></div>
+
+  </div>
 </div>
