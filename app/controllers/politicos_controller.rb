@@ -112,6 +112,6 @@ class PoliticosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def politico_params
-      params.require(:politico).permit(:municipio, :activo, :modificador, :creador, :descripcion, :nombre, :apellido, :cedula, :sexo, :partido, :telefono, :celular, :email, :whatsapp, :instagram, :twitter, :facebook, :puntov, :cNombre, :cCel1, :cCel2, :cTel, :cWhatsapp, :cEmail)
+      params.require(:politico).permit(:municipio, :activo, :picture, :modificador, :creador, :descripcion, :nombre, :apellido, :cedula, :sexo, :partido, :telefono, :celular, :email, :whatsapp, :instagram, :twitter, :facebook, :puntov, :cNombre, :cCel1, :cCel2, :cTel, :cWhatsapp, :cEmail)
     end
 end

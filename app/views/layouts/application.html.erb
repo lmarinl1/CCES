@@ -63,17 +63,19 @@
           </li>
         </ul>
 
+         <div class="rounded-circle avatar" >
+                <%= image_tag Estefan.find(current_user.id).picture.small.url, width:'40', height:'40'%>
+              </div>
 
         <% #final %>
         <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
-                 <%= current_user.email %> &nbsp
+                    <%= Estefan.find(current_user.id).nombre%> <%=Estefan.find(current_user.id).apellido  %> &nbsp
                 </a>
                 <div class="dropdown-menu">
-                  <%= link_to "Mi Perfil", '#', class:"dropdown-item", :remote=>true %>
+                  <%= link_to "Mi Perfil", Estefan.find(current_user.id), class:"dropdown-item" %>
                   <%= link_to "Salir", destroy_user_session_path, :method=>:delete, class:"dropdown-item"%>
                 </div>
               </li>

@@ -76,6 +76,6 @@ class AportesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def aporte_params
-      params.require(:aporte).permit(:activo, :modificador, :creador, :descripcion, :nombre)
+      params.require(:aporte).permit(:activo, :modificador, :creador, :descripcion, :nombre, :picture)
     end
 end

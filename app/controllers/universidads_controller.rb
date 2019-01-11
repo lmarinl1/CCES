@@ -88,6 +88,6 @@ class UniversidadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def universidad_params
-      params.require(:universidad).permit(:municipio, :activo, :modificador, :creador, :descripcion, :nombre, :nit, :nroEstudiantes, :direccion, :facebook, :twitter, :instagram, :web)
+      params.require(:universidad).permit(:municipio, :picture, :activo, :modificador, :creador, :descripcion, :nombre, :nit, :nroEstudiantes, :direccion, :facebook, :twitter, :instagram, :web)
     end
 end

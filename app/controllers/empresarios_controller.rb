@@ -103,6 +103,6 @@ class EmpresariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def empresario_params
-      params.require(:empresario).permit(:municipio, :activo, :modificador, :creador, :descripcion, :nombre, :apellido, :cedula, :sexo, :empresa, :telefono, :celular, :email, :whatsapp, :instagram, :twitter, :facebook, :puntov, :cNombre, :cCel1, :cCel2, :cTel, :cWhatsapp, :cEmail)
+      params.require(:empresario).permit(:municipio, :activo, :modificador, :creador, :descripcion, :nombre, :apellido, :cedula, :sexo, :empresa, :telefono, :celular, :email, :whatsapp, :instagram, :twitter, :facebook, :puntov, :cNombre, :cCel1, :cCel2, :cTel, :cWhatsapp, :cEmail, :picture)
     end
 end

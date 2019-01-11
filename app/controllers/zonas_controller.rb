@@ -75,6 +75,6 @@ class ZonasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zona_params
-      params.require(:zona).permit(:nombre, :municipio, :activo, :modificador, :creador, :lmap, :descripcion)
+      params.require(:zona).permit(:nombre, :picture, :municipio, :activo, :modificador, :creador, :lmap, :descripcion)
     end
 end

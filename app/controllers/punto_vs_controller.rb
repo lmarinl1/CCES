@@ -76,6 +76,6 @@ class PuntoVsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def punto_v_params
-      params.require(:punto_v).permit(:nombre, :zona, :activo, :modificador, :creador, :descripcion, :direccion, :nromesas, :nropersonasmesa, :hombres, :mujeres)
+      params.require(:punto_v).permit(:nombre, :zona, :picture, :activo, :modificador, :creador, :descripcion, :direccion, :nromesas, :nropersonasmesa, :hombres, :mujeres)
     end
 end

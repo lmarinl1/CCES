@@ -20,6 +20,11 @@
     <%= form.text_area :descripcion %>
   </div>
 
+   <div class="field">
+    <%= form.label :picture %>
+    <%= form.file_field :picture %>
+  </div>
+
   <% if current_user.id == 1 %>
   <div class="field">
     <%= form.label :activo %>
