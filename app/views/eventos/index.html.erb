@@ -12,7 +12,12 @@
       <!-- Tabla Eventos -->
       <div class="tab-pane fade show active" id="v-pills-admins" role="tabpanel" aria-labelledby="v-pills-admins-tab">
         <div class="container mt40">
-          <h1>Eventos</h1>
+          <div class="row">
+            <div class="col-md-3"><h1>Eventos</h1></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3"><%= link_to new_evento_path, class: "btn btn-success", :remote=>true do%><img src="<%= asset_path 'icons/png/calendar-20.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Nuevo <%end%></div>
+          </div>
+          
           <br>
           <section class="row">
       
@@ -55,7 +60,6 @@
           </section>
 
         </div>
-        <%= link_to 'New Evento', new_evento_path, :remote=>true %>
         <div id="new_evento" style="display: none;"></div>
       </div>
       

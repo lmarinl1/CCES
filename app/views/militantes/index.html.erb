@@ -9,7 +9,13 @@
 
   <div id="Militantes" class="tab-content col-md-9">
 
-    <h1>Militantes</h1>
+    <br>
+    <div class="row">
+      <div class="col-md-3"><h1>Militantes</h1></div>
+      <div class="col-md-6"></div>
+      <div class="col-md-3"><%= link_to new_militante_path, class: "btn btn-success", :remote=>true do%><img src="<%= asset_path 'politics/png/007-vote-1.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Nuevo <%end%></div>
+    </div>
+    <br>
 
     <table class="table table-striped table-responsive">
       <thead>
@@ -47,7 +53,6 @@
 
     <br>
 
-    <%= link_to 'New Militante', new_militante_path, :remote=>true %>
     <div id="new_militante" style="display: none;"></div>
 
  </div>

@@ -8,7 +8,14 @@
   </div>
 
   <div id="Estefans" class="tab-content col-md-9">
-    <h1>Estefans</h1>
+
+    <br>
+    <div class="row">
+      <div class="col-md-3"><h1>Este-fans</h1></div>
+      <div class="col-md-6"></div>
+      <div class="col-md-3"><%= link_to new_estefan_path, class: "btn btn-success", :remote=>true do%><img src="<%= asset_path 'icons/png/user-40.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Nuevo <%end%></div>
+    </div>
+    <br>
 
     <table class="table table-striped table-responsive">
       <thead>
@@ -43,7 +50,6 @@
 
     <br>
 
-    <%= link_to 'New Estefan', new_estefan_path, :remote => true %>
     <div id="new_estefan" style="display: none;"></div>
   </div>
 </div>  
