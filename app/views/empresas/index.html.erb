@@ -14,10 +14,10 @@
     <table class="table table-striped table-responsive">
       <thead>
         <tr>
-          <th>Picture</th>
+          <th>Imagen</th>
           <th>Redes</th>
           <th>Nombre</th>
-          <th>Direccion</th>
+          <th>Dirección</th>
           <th></th>
         </tr>
       </thead>
@@ -25,12 +25,12 @@
       <tbody>
         <% @empresas.each do |empresa| %>
           <tr>
-            <td><%= link_to empresa do%><%= image_tag empresa.picture.thumb.url, class: 'figure-img img-fluid rounded', width:'180', height:'180'%><% end %></td>
-            <td><br><%= link_to empresa.facebook do %><img src="<%= asset_path 'social/png/036-facebook.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
+            <td><%= link_to empresa do%><%= image_tag empresa.picture.url, class: 'figure-img img-fluid rounded', width:'90', height:'90'%><% end %></td>
+            <td><%= link_to empresa.facebook do %><img src="<%= asset_path 'social/png/036-facebook.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
                 <%= link_to empresa.twitter do %><img src="<%= asset_path 'social/png/008-twitter.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
                 <%= link_to empresa.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
                 <%= link_to empresa.web do %><img src="<%= asset_path 'politics/png/012-analytics.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
-            <td><br><h3><%= empresa.nombre %></h3></td>
+            <td><br><h5><%= empresa.nombre %></h5></td>
             <td><br><%= empresa.direccion %>, <br><%= Municipio.find(empresa.municipio).nombre  %></td>
             <td><%= link_to edit_empresa_path(empresa) do %><img src="<%= asset_path 'icons/png/archive-12.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
                 <%= link_to empresa, method: :delete, data: { confirm: 'Desea desactivar '+empresa.nombre()+'?' } do%><img src="<%= asset_path 'icons/png/archive-2.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>

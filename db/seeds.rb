@@ -9,7 +9,7 @@
 
 # Admin User
 User.create(email: "ccesequipo@gmail.com",  password: "123456")
-Estefan.create(cedula: '0000000000', nombre: 'cces', apellido: 'equipo', nacimento: '2018-11-01', cargo: 'Admin', email: 'ccesequipo@gmail.com', cel: '+57 0000000000', sexo: 'O', creador: 1, modificador: 1)
+Estefan.create(cedula: '0000000000', nombre: 'cces', apellido: 'equipo', nacimento: '2018-11-01', cargo: 'Admin', email: 'ccesequipo@gmail.com', cel: '+57 0000000000', sexo: 'O', creador: 1, modificador: 1, zona: 1, municipio: 1)
 
 # Municipios
 lista_municipios = [

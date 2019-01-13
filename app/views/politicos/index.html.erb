@@ -11,31 +11,14 @@
 
     <table class="table table-striped table-responsive">
       <thead>
-        <tr>
-          <th>Municipio</th>
-          <th>Activo</th>
-          <th>Modificador</th>
-          <th>Creador</th>
-          <th>Descripcion</th>
+        <tr></tr>
+          <th>Picture</th>
+          <th>Redes</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Cedula</th>
-          <th>Sexo</th>
+          <th>Apellidos</th>
           <th>Partido</th>
-          <th>Telefono</th>
-          <th>Celular</th>
-          <th>Email</th>
-          <th>Whatsapp</th>
-          <th>Instagram</th>
-          <th>Twitter</th>
-          <th>Facebook</th>
-          <th>Puntov</th>
-          <th>Cnombre</th>
-          <th>Ccel1</th>
-          <th>Ccel2</th>
-          <th>Ctel</th>
-          <th>Cwhatsapp</th>
-          <th>Cemail</th>
+          <th>Municipio</th>
+          <th>E-mail</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -43,33 +26,17 @@
       <tbody>
         <% @politicos.each do |politico| %>
           <tr>
-            <td><%= politico.municipio %></td>
-            <td><%= politico.activo %></td>
-            <td><%= politico.modificador %></td>
-            <td><%= politico.creador %></td>
-            <td><%= politico.descripcion %></td>
+            <td><%= image_tag politico.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%></td>
+            <td><%= link_to politico.facebook do %><img src="<%= asset_path 'social/png/036-facebook.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
+                <%= link_to politico.twitter do %><img src="<%= asset_path 'social/png/008-twitter.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
+                <%= link_to politico.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
             <td><%= politico.nombre %></td>
             <td><%= politico.apellido %></td>
-            <td><%= politico.cedula %></td>
-            <td><%= politico.sexo %></td>
             <td><%= politico.partido %></td>
-            <td><%= politico.telefono %></td>
-            <td><%= politico.celular %></td>
+            <td><%= Municipio.find(politico.municipio).nombre %></td>
             <td><%= politico.email %></td>
-            <td><%= politico.whatsapp %></td>
-            <td><%= politico.instagram %></td>
-            <td><%= politico.twitter %></td>
-            <td><%= politico.facebook %></td>
-            <td><%= politico.puntov %></td>
-            <td><%= politico.cNombre %></td>
-            <td><%= politico.cCel1 %></td>
-            <td><%= politico.cCel2 %></td>
-            <td><%= politico.cTel %></td>
-            <td><%= politico.cWhatsapp %></td>
-            <td><%= politico.cEmail %></td>
-            <td><%= link_to 'Show', politico %></td>
-            <td><%= link_to 'Edit', edit_politico_path(politico) %></td>
-            <td><%= link_to 'Destroy', politico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to edit_politico_path(politico) do %><img src="<%= asset_path 'icons/png/user-52.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
+                <%= link_to politico, method: :delete, data: { confirm: 'Desea desactivar '+politico.nombre()+'?' } do%><br><img src="<%= asset_path 'icons/png/user-42.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>
         <% end %>
       </tbody>

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+ 
+<div class="row">
+  <div class="tab col-md-3">
+   <%= link_to voluntarios_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/file-14.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Voluntarios</button><%end%> 
+   <%= link_to estefans_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/user-43.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Estefans</button><%end%> 
+   <button class="tablinks" onclick="openCity(event, 'Militantes')"><img src="<%= asset_path 'politics/png/007-vote-1.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Militantes</button>
+  </div>
+
+  <div id="Militantes" class="tab-content col-md-9">
+
+    <h1>Militantes</h1>
+
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>Cedula</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Sexo</th>
+          <th>Ocupación</th>
+          <th>E-mail</th>
+          <th>Celular</th>
+          <th>Municipio</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @militantes.each do |militante| %>
+          <tr>
+            <td><%= militante.cedula %></td>
+            <td><%= militante.nombre %></td>
+            <td><%= militante.apellido %></td>
+            <td><%= militante.sexo %></td>
+            <td><%= militante.ocupacion %></td>
+            <td><%= militante.email %></td>
+            <td><%= militante.cel %></td>
+            <td><%= militante.municipio %></td>
+            <td><%= link_to 'Show', militante %></td>
+            <td><%= link_to 'Edit', edit_militante_path(militante) %></td>
+            <td><%= link_to 'Destroy', militante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Militante', new_militante_path, :remote=>true %>
+    <div id="new_militante" style="display: none;"></div>
+
+ </div>
+</div>

@@ -1,0 +1,2 @@
+class Militante < ApplicationRecord
+end

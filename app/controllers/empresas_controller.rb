@@ -24,7 +24,7 @@ class EmpresasController < ApplicationController
     else
       ms = Municipio.where(activo: true)
     end
-    @municipios = []
+    @municipios = [['Sin Seleccionar',(-1).to_int]]
     ms.each do |m|
       @municipios.push([m.nombre,m.id])
     end

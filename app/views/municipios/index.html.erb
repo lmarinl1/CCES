@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Picture</th>
       <th>Nombre</th>
       <th>Categoria</th>
       <th>Departamento</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @municipios.each do |municipio| %>
       <tr>
+        <td><%= image_tag municipio.picture.url, class: 'figure-img img-fluid rounded', width:'75', height:'75'%></td>
         <td><%= municipio.nombre %></td>
         <td><%= municipio.categoria %></td>
         <td><%= municipio.departamento %></td>

@@ -4,6 +4,7 @@
   <div class="tab col-md-3">
    <%= link_to voluntarios_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/file-14.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Voluntarios</button><%end%> 
    <button class="tablinks" onclick="openCity(event, 'Estefans')"><img src="<%= asset_path 'icons/png/user-43.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Estefans</button>
+   <%= link_to militantes_path  do %> <button class="tablinks"><img src="<%= asset_path 'politics/png/007-vote-1.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Militantes</button><%end%> 
   </div>
 
   <div id="Estefans" class="tab-content col-md-9">
@@ -12,54 +13,29 @@
     <table class="table table-striped table-responsive">
       <thead>
         <tr>
-          <th>Cedula</th>
+          <th>Imagen</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Nacimento</th>
+          <th>Apellidos</th>
           <th>Cargo</th>
-          <th>Email</th>
-          <th>Creador</th>
-          <th>Activo</th>
-          <th>Modificador</th>
-          <th>Cel</th>
+          <th>E-mail</th>
           <th>Zona</th>
           <th>Municipio</th>
-          <th>Instagram</th>
-          <th>Facebook</th>
-          <th>Twitter</th>
-          <th>Whatsapp</th>
-          <th>Descripcion</th>
-          <th>Sexo</th>
-          <th>Puntov</th>
-          <th colspan="3"></th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
         <% @estefans.each do |estefan| %>
           <tr>
-            <td><%= estefan.cedula %></td>
+            <td><%= image_tag estefan.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%></td>
             <td><%= estefan.nombre %></td>
             <td><%= estefan.apellido %></td>
-            <td><%= estefan.nacimento %></td>
             <td><%= estefan.cargo %></td>
             <td><%= estefan.email %></td>
-            <td><%= estefan.creador %></td>
-            <td><%= estefan.activo %></td>
-            <td><%= estefan.modificador %></td>
-            <td><%= estefan.cel %></td>
-            <td><%= estefan.zona %></td>
-            <td><%= estefan.municipio %></td>
-            <td><%= estefan.instagram %></td>
-            <td><%= estefan.facebook %></td>
-            <td><%= estefan.twitter %></td>
-            <td><%= estefan.whatsapp %></td>
-            <td><%= estefan.descripcion %></td>
-            <td><%= estefan.sexo %></td>
-            <td><%= estefan.puntov %></td>
-            <td><%= link_to 'Show', estefan %></td>
-            <td><%= link_to 'Edit', edit_estefan_path(estefan) %></td>
-            <td><%= link_to 'Destroy', estefan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= Zona.find(estefan.zona).nombre %></td>
+            <td><%= Municipio.find(estefan.municipio).nombre %></td>
+            <td><%= link_to edit_estefan_path(estefan) do %><img src="<%= asset_path 'icons/png/user-52.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
+                <%= link_to estefan, method: :delete, data: { confirm: 'Desea desactivar '+estefan.nombre()+'?' } do%><img src="<%= asset_path 'icons/png/user-42.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>
         <% end %>
       </tbody>

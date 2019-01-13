@@ -27,12 +27,12 @@ class PoliticosController < ApplicationController
       pv = PuntoV.where(activo: true)
     end
     # municipio
-    @municipios = []
+    @municipios = [['Sin Seleccionar',(-1).to_int]]
     ms.each do |m|
       @municipios.push([m.nombre,m.id])
     end
     # PuntoV
-    @puntovs = []
+    @puntovs = [['Sin Seleccionar',(-1).to_int]]
     pv.each do |p|
       @puntovs.push([p.nombre,p.id])
     end

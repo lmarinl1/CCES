@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :militantes
   resources :zonas
   devise_for :users
   resources :puntos

@@ -13,30 +13,12 @@
       <thead>
         <tr></tr>
           <th>Picture</th>
-          <th>Municipio</th>
-          <th>Activo</th>
-          <th>Modificador</th>
-          <th>Creador</th>
-          <th>Descripcion</th>
+          <th>Redes</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Cedula</th>
-          <th>Sexo</th>
+          <th>Apellidos</th>
           <th>Empresa</th>
-          <th>Telefono</th>
-          <th>Celular</th>
-          <th>Email</th>
-          <th>Whatsapp</th>
-          <th>Instagram</th>
-          <th>Twitter</th>
-          <th>Facebook</th>
-          <th>Puntov</th>
-          <th>Cnombre</th>
-          <th>Ccel1</th>
-          <th>Ccel2</th>
-          <th>Ctel</th>
-          <th>Cwhatsapp</th>
-          <th>Cemail</th>
+          <th>Municipio</th>
+          <th>E-mail</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -44,34 +26,17 @@
       <tbody>
         <% @empresarios.each do |empresario| %>
           <tr>
-            <td><%= image_tag empresario.picture.medium.url, class: 'figure-img img-fluid rounded'%></td>
-            <td><%= empresario.municipio %></td>
-            <td><%= empresario.activo %></td>
-            <td><%= empresario.modificador %></td>
-            <td><%= empresario.creador %></td>
-            <td><%= empresario.descripcion %></td>
+            <td><%= image_tag empresario.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%></td>
+            <td><%= link_to empresario.facebook do %><img src="<%= asset_path 'social/png/036-facebook.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
+                <%= link_to empresario.twitter do %><img src="<%= asset_path 'social/png/008-twitter.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
+                <%= link_to empresario.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
             <td><%= empresario.nombre %></td>
             <td><%= empresario.apellido %></td>
-            <td><%= empresario.cedula %></td>
-            <td><%= empresario.sexo %></td>
-            <td><%= empresario.empresa %></td>
-            <td><%= empresario.telefono %></td>
-            <td><%= empresario.celular %></td>
+            <td><%= Empresa.find(empresario.empresa).nombre %></td>
+            <td><%= Municipio.find(empresario.municipio).nombre %></td>
             <td><%= empresario.email %></td>
-            <td><%= empresario.whatsapp %></td>
-            <td><%= empresario.instagram %></td>
-            <td><%= empresario.twitter %></td>
-            <td><%= empresario.facebook %></td>
-            <td><%= empresario.puntov %></td>
-            <td><%= empresario.cNombre %></td>
-            <td><%= empresario.cCel1 %></td>
-            <td><%= empresario.cCel2 %></td>
-            <td><%= empresario.cTel %></td>
-            <td><%= empresario.cWhatsapp %></td>
-            <td><%= empresario.cEmail %></td>
-            <td><%= link_to 'Show', empresario %></td>
-            <td><%= link_to 'Edit', edit_empresario_path(empresario) %></td>
-            <td><%= link_to 'Destroy', empresario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to edit_empresario_path(empresario) do %><img src="<%= asset_path 'icons/png/user-52.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
+                <%= link_to empresario, method: :delete, data: { confirm: 'Desea desactivar '+empresario.nombre()+'?' } do%><br><img src="<%= asset_path 'icons/png/user-42.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>
         <% end %>
       </tbody>
