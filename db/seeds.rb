@@ -8,7 +8,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Admin User
-User.create(email: "ccesequipo@gmail.com",  password: "123456")
+User.create(email: ENV.fetch("admin_user"),  password: ENV.fetch("admin_password"))
 Estefan.create(cedula: '0000000000', nombre: 'cces', apellido: 'equipo', nacimento: '2018-11-01', cargo: 'Admin', email: 'ccesequipo@gmail.com', cel: '+57 0000000000', sexo: 'O', creador: 1, modificador: 1, zona: 1, municipio: 1)
 
 # Municipios

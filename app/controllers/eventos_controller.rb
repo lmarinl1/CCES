@@ -1,13 +1,14 @@
 class EventosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
 
   # GET /eventos
   # GET /eventos.json
   def index
     if current_user.id == 1 then
-      @eventos = Evento.all
+      @eventos = Evento.all.order(fecha: :asc,hora: :asc)
     else
-      @eventos = Evento.where(activo: true)
+      @eventos = Evento.where(activo: true).order(fecha: :asc,hora: :asc)
     end
   end
 

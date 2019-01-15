@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
- 
 <div class="row">
   <div class="tab col-md-3">
    <button class="tablinks" onclick="openCity(event, 'Politicos')"><img src="<%= asset_path 'politics/png/026-capitol.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Políticos</button>
@@ -50,8 +48,6 @@
 
     <br>
 
-    <%= link_to 'New Politico', new_politico_path, :remote=>true %>
     <div id="new_politico" style="display: none;"></div>
-
   </div>
 </div>

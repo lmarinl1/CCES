@@ -1,4 +1,5 @@
-class MunicipiosController < ApplicationController
+class MunicipiosController < AApplicationController
+  before_action :authenticate_user!
   before_action :set_municipio, only: [:show, :edit, :update, :destroy]
 
   # GET /municipios

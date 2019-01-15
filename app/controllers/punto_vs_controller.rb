@@ -1,4 +1,5 @@
 class PuntoVsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_punto_v, only: [:show, :edit, :update, :destroy]
 
   # GET /punto_vs

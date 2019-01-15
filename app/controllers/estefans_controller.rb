@@ -1,4 +1,5 @@
 class EstefansController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_estefan, only: [:show, :edit, :update, :destroy]
 
   # GET /estefans
@@ -56,12 +57,16 @@ class EstefansController < ApplicationController
     @estefan.creador = current_user.id
     @estefan.modificador = current_user.id
     @user = create_user(@estefan.email)
-
-    respond_to do |format|
-      if @estefan.save and @user.save
+    
+    
+    if @estefan.save and @user[0].save
+      NewUserEmailMailer.notify_user(@user[0], @user[1], current_user).deliver
+      respond_to do |format|
         format.html { redirect_to @estefan, notice: 'Estefan was successfully created.' }
         format.json { render :show, status: :created, location: @estefan }
-      else
+      end
+    else
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @estefan.errors, status: :unprocessable_entity }
       end
@@ -88,8 +93,10 @@ class EstefansController < ApplicationController
     if @estefan.update_attributes(:activo => false, :modificador => current_user.id)
       redirect_to estefans_url
     else
-      format.html { render :edit }
-      format.json { render json: @estefan.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @estefan.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -105,9 +112,8 @@ class EstefansController < ApplicationController
     end
 
     def create_user(email)
-      user = User.new
-      user.email = email
-      user.password = '123456'
-      return user
+      password = Devise.friendly_token.first(8)
+      user = User.new(:email => email, :password => password, :password_confirmation => password)
+      return [user,password]
     end
 end

@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark nav-fill">
+      <div class="col-sm-4">
+	      <a class="navbar-brand">
+	        <h2><img src="<%= asset_path 'icons/png/database-3.png' %>"  width="43" height="43" class="d-inline-block align-top" alt="">
+	        SysCCES</h2>
+	      </a>
+      </div>
+    </nav>
+    <div class="container">
+
+      <%= yield %>
+
+      <br><br>
+      <footer>
+        <div>Icons made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> and <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"         title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"        title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+        <div> <b>SysCCES</b> - Sistema para la Campaña al Concejo de Estefanía - Sabaneta <br><b>version 1.0.0</b> - 2019</div>
+      </footer>
+    </div>
   </body>
+  <br>
+ 
 </html>

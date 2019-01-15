@@ -1,0 +1,23 @@
+<% palabra = 'Bienvenido' %>
+<% if @estefan.sexo == 'F' then %>
+	<% palabra = 'Bienvenida' %>
+<% end %>
+
+<h3> <%= palabra %> <%= @estefan.nombre %> <%= @estefan.apellido %> </h3>
+
+<p> Usted ha sido registrado por "<%= @creador.nombre %>" quién es "<%= @creador.cargo %>", en la plataforma SysCCES, la cual es un sistema web para la gestión de datos de la campaña política de Estefanía Muñoz - Concejo Sabaneta 2020-2024. </p>
+<br>
+<h4>Las siguientes son las credenciales de acceso a la plaraforma: </h4>
+<ul>
+	<li><b> E-mail:</b> <i><%= @estefan.email %></i></li>
+	<li><b> Password:</b> <i><%= @password %></i></li>
+</ul>
+<br>
+<p><b>Nota:</b> Si desea cambiar la contraseña lo puede realizar desde la plataforma.</p>
+<br>
+<br>
+<small>Si recibió esta información por error haga caso omiso ante lo que se dijo previamente.</small>
+
+
+
+
