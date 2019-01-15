@@ -35,7 +35,7 @@
                 <%= link_to universidad.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
                 <%= link_to universidad.web do %><img src="<%= asset_path 'politics/png/012-analytics.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
             <td><br><h5><%= universidad.nombre %></h5></td>
-            <td><br><%= universidad.direccion %>, <br><%= Municipio.find(universidad.municipio).nombre  %></td>
+            <td><br><%= universidad.direccion %>, <br><% if universidad.municipio != -1 then%><%= Municipio.find(universidad.municipio).nombre  %><%end%></td>
             <td><%= link_to edit_universidad_path(universidad) do %><img src="<%= asset_path 'icons/png/notebook-12.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
                 <%= link_to universidad, method: :delete, data: { confirm: 'Desea desactivar '+universidad.nombre()+'?' } do%><img src="<%= asset_path 'icons/png/notebook-2.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>

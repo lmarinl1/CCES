@@ -1,7 +1,7 @@
 <%= form_with(model: evento, local: true) do |form| %>
   <% if evento.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
+      <h2><%= pluralize(evento.errors.count, "error") %> No se permite actualizar este Evento:</h2>
 
       <ul>
       <% evento.errors.full_messages.each do |message| %>

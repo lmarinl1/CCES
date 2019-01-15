@@ -1,69 +1,60 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="row">
+  <div class="col-md-4"> 
+    <%= image_tag @universidad.picture.small.url, class:"rounded border border-success center",  width:"280", height:"280"%><hr>
+    <br>
+    <%= link_to 'Editar', edit_universidad_path(@universidad), class:"btn btn-info" %> |
+    <%= link_to 'Universidades', universidads_path, class:"btn btn-success"  %>
+  </div>
+  <div class="col-md-8">
+    <br>
+    <h2><img src="<%= asset_path 'icons/png/notebook-10.png'%>"  width="40" height="40" class="d-inline-block align-top" alt=""> <%= @universidad.nombre %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+      <%= link_to @universidad.facebook do %><img src="<%= asset_path 'social/png/036-facebook.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+      <%= link_to @universidad.twitter do %><img src="<%= asset_path 'social/png/008-twitter.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+      <%= link_to @universidad.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+      <%= link_to @universidad.web do %><img src="<%= asset_path 'politics/png/012-analytics.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+    </h2> <hr>
+    
+    <div class="row">
+      <div class="col-md-4 bg-info rounded border border-info"> 
+        <strong>NIT:</strong>
+        <h4><i><%= @universidad.nit%></i></h4>
+        <strong>Nro Estudiantes:</strong>
+        <%= @universidad.nroEstudiantes%>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-1">
+        <img src="<%= asset_path 'icons/png/placeholder-8.png'%>"  width="80" height="80" class="d-inline-block align-top" alt="">
+      </div>
+      <div class="col-md-5">
+        &nbsp&nbsp<strong> Dirección: </strong> <%= @universidad.direccion %><br>
+        <% if @universidad.municipio != -1 then %>
+        &nbsp&nbsp<strong> Municipio: </strong> <%=link_to Municipio.find(@universidad.municipio).web do %> <%= Municipio.find(@universidad.municipio).nombre %> <% end %> 
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <p>
+        <strong>Descripción:</strong><br>
+        <%= @universidad.descripcion %> 
+      </p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Municipio:</strong>
-  <%= @universidad.municipio %>
-</p>
 
-<p>
-  <strong>Activo:</strong>
-  <%= @universidad.activo %>
-</p>
+<br><br>
+<div class="row">
+  <div class="col-md-6">
+    <strong>Creador:</strong><br>
+    <%= image_tag Estefan.find(@universidad.creador).picture.small.url, class:"rounded-circle",  width:"50", height:"50"%> <%= Estefan.find(@universidad.creador).nombre %> <%= Estefan.find(@universidad.creador).apellido %>
+  </div>
 
-<p>
-  <strong>Modificador:</strong>
-  <%= @universidad.modificador %>
-</p>
+  <div class="col-md-6">
+    <strong>Último modificador:</strong><br>
+    <%= image_tag Estefan.find(@universidad.modificador).picture.small.url, class:"rounded-circle",  width:"50", height:"50"%> <%= Estefan.find(@universidad.modificador).nombre %> <%= Estefan.find(@universidad.modificador).apellido %>
+  </div>
+</div>
 
-<p>
-  <strong>Creador:</strong>
-  <%= @universidad.creador %>
-</p>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @universidad.descripcion %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @universidad.nombre %>
-</p>
-
-<p>
-  <strong>Nit:</strong>
-  <%= @universidad.nit %>
-</p>
-
-<p>
-  <strong>Nroestudiantes:</strong>
-  <%= @universidad.nroEstudiantes %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @universidad.direccion %>
-</p>
-
-<p>
-  <strong>Facebook:</strong>
-  <%= @universidad.facebook %>
-</p>
-
-<p>
-  <strong>Twitter:</strong>
-  <%= @universidad.twitter %>
-</p>
-
-<p>
-  <strong>Instagram:</strong>
-  <%= @universidad.instagram %>
-</p>
-
-<p>
-  <strong>Web:</strong>
-  <%= @universidad.web %>
-</p>
-
-<%= link_to 'Edit', edit_universidad_path(@universidad) %> |
-<%= link_to 'Back', universidads_path %>

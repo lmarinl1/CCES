@@ -1,44 +1,54 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Zona:</strong>
-  <%= @evento.zona %>
-</p>
+<br>
+<div class="row">
+  <div class="col-md-4"> 
+    <%= image_tag @evento.picture.small.url, class:"rounded border border-success center",  width:"280", height:"280"%><hr>
+    <p>
+      <strong>Link para inscripción:</strong><br>
+      www.google.com
+    </p>
+    <%= link_to 'Editar', edit_evento_path(@evento), class:"btn btn-info" %> |
+    <%= link_to 'Eventos', eventos_path, class:"btn btn-success"  %>
+  </div>
+  <div class="col-md-8">
+    <br>
+    <h2><img src="<%= asset_path 'icons/png/calendar-30.png'%>"  width="40" height="40" class="d-inline-block align-top" alt=""> <%= @evento.nombre %></h2> <hr>
+    
+    <div class="row">
+      <div class="col-md-4 bg-info rounded border border-info"> 
+        <h1><%= @evento.hora.to_s(:time) %></h1>
+        <%= @evento.fecha.to_formatted_s(:long_ordinal) %>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-1">
+        <img src="<%= asset_path 'icons/png/placeholder-8.png'%>"  width="80" height="80" class="d-inline-block align-top" alt="">
+      </div>
+      <div class="col-md-5">
+        &nbsp&nbsp<strong> Dirección: </strong> <%= @evento.direccion %>
+        <br>&nbsp&nbsp<strong> Zona: </strong> <%= link_to Zona.find(@evento.zona).lmap do%><%= Zona.find(@evento.zona).nombre %><% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <p>
+        <strong>Descripción:</strong><br>
+        <%= @evento.descripcion %> 
+      </p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Activo:</strong>
-  <%= @evento.activo %>
-</p>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @evento.fecha %>
-</p>
+<br><br>
+<div class="row">
+  <div class="col-md-6">
+    <strong>Creador:</strong><br>
+    <%= image_tag Estefan.find(@evento.creador).picture.small.url, class:"rounded-circle",  width:"50", height:"50"%> <%= Estefan.find(@evento.creador).nombre %> <%= Estefan.find(@evento.creador).apellido %>
+  </div>
 
-<p>
-  <strong>Modificador:</strong>
-  <%= @evento.modificador %>
-</p>
+  <div class="col-md-6">
+    <strong>último modificador:</strong><br>
+    <%= image_tag Estefan.find(@evento.modificador).picture.small.url, class:"rounded-circle",  width:"50", height:"50"%> <%= Estefan.find(@evento.modificador).nombre %> <%= Estefan.find(@evento.modificador).apellido %>
+  </div>
+</div>
 
-<p>
-  <strong>Creador:</strong>
-  <%= @evento.creador %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @evento.descripcion %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @evento.nombre %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @evento.direccion %>
-</p>
-
-<%= link_to 'Edit', edit_evento_path(@evento) %> |
-<%= link_to 'Back', eventos_path %>

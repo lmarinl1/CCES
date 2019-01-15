@@ -1,69 +1,60 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="row">
+  <div class="col-md-4"> 
+    <%= image_tag @empresa.picture.small.url, class:"rounded border border-success center",  width:"280", height:"280"%><hr>
+    <br>
+    <%= link_to 'Editar', edit_empresa_path(@empresa), class:"btn btn-info" %> |
+    <%= link_to 'Empresas', empresas_path, class:"btn btn-success"  %>
+  </div>
+  <div class="col-md-8">
+    <br>
+    <h2><img src="<%= asset_path 'icons/png/archive-10.png'%>"  width="40" height="40" class="d-inline-block align-top" alt=""> <%= @empresa.nombre %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+      <%= link_to @empresa.facebook do %><img src="<%= asset_path 'social/png/036-facebook.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+      <%= link_to @empresa.twitter do %><img src="<%= asset_path 'social/png/008-twitter.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+      <%= link_to @empresa.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+      <%= link_to @empresa.web do %><img src="<%= asset_path 'politics/png/012-analytics.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""><% end %>
+    </h2> <hr>
+    
+    <div class="row">
+      <div class="col-md-4 bg-info rounded border border-info"> 
+        <strong>Nit:</strong>
+        <h4><i><%= @empresa.nit%></i></h4>
+        <strong>Nro Empleados:</strong>
+        <%= @empresa.nroEmpleados%>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-1">
+        <img src="<%= asset_path 'icons/png/placeholder-8.png'%>"  width="80" height="80" class="d-inline-block align-top" alt="">
+      </div>
+      <div class="col-md-5">
+        &nbsp&nbsp<strong> Dirección: </strong> <%= @empresa.direccion %><br>
+        <% if @empresa.municipio != -1 then %>
+        &nbsp&nbsp<strong> Municipio: </strong> <%=link_to Municipio.find(@empresa.municipio).web do %> <%= Municipio.find(@empresa.municipio).nombre %> <% end %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <p>
+        <strong>Descripción:</strong><br>
+        <%= @empresa.descripcion %> 
+      </p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Municipio:</strong>
-  <%= @empresa.municipio %>
-</p>
 
-<p>
-  <strong>Activo:</strong>
-  <%= @empresa.activo %>
-</p>
+<br><br>
+<div class="row">
+  <div class="col-md-6">
+    <strong>Creador:</strong><br>
+    <%= image_tag Estefan.find(@empresa.creador).picture.small.url, class:"rounded-circle",  width:"50", height:"50"%> <%= Estefan.find(@empresa.creador).nombre %> <%= Estefan.find(@empresa.creador).apellido %>
+  </div>
 
-<p>
-  <strong>Modificador:</strong>
-  <%= @empresa.modificador %>
-</p>
+  <div class="col-md-6">
+    <strong>Último modificador:</strong><br>
+    <%= image_tag Estefan.find(@empresa.modificador).picture.small.url, class:"rounded-circle",  width:"50", height:"50"%> <%= Estefan.find(@empresa.modificador).nombre %> <%= Estefan.find(@empresa.modificador).apellido %>
+  </div>
+</div>
 
-<p>
-  <strong>Creador:</strong>
-  <%= @empresa.creador %>
-</p>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @empresa.descripcion %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @empresa.nombre %>
-</p>
-
-<p>
-  <strong>Nit:</strong>
-  <%= @empresa.nit %>
-</p>
-
-<p>
-  <strong>Nroempleados:</strong>
-  <%= @empresa.nroEmpleados %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @empresa.direccion %>
-</p>
-
-<p>
-  <strong>Facebook:</strong>
-  <%= @empresa.facebook %>
-</p>
-
-<p>
-  <strong>Twitter:</strong>
-  <%= @empresa.twitter %>
-</p>
-
-<p>
-  <strong>Instagram:</strong>
-  <%= @empresa.instagram %>
-</p>
-
-<p>
-  <strong>Web:</strong>
-  <%= @empresa.web %>
-</p>
-
-<%= link_to 'Edit', edit_empresa_path(@empresa) %> |
-<%= link_to 'Back', empresas_path %>

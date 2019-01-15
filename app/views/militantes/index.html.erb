@@ -26,25 +26,25 @@
           <th>E-mail</th>
           <th>Celular</th>
           <th>Municipio</th>
-          <th colspan="3"></th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
         <% @militantes.each do |militante| %>
           <tr>
-            <td><%= militante.cedula %></td>
-            <td><%= militante.nombre %></td>
-            <td><%= militante.apellido %></td>
-            <td><%= militante.sexo %></td>
-            <td><%= militante.ocupacion %></td>
-            <td><%= militante.email %></td>
-            <td><%= militante.cel %></td>
-            <td><%= militante.municipio %></td>
-            <td><%= link_to 'Show', militante %></td>
-            <td><%= link_to 'Edit', edit_militante_path(militante) %></td>
-            <td><%= link_to 'Destroy', militante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+            <% link_to militante do %>
+              <td><%= militante.cedula %></td>
+              <td><%= militante.nombre %></td>
+              <td><%= militante.apellido %></td>
+              <td><%= militante.sexo %></td>
+              <td><%= militante.ocupacion %></td>
+              <td><%= militante.email %></td>
+              <td><%= militante.cel %></td>
+              <td><%= militante.municipio %></td>
+            <% end %>
+            <td><%= link_to edit_militante_path(militante) do %><img src="<%= asset_path 'icons/png/user-52.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
+                <%= link_to militante, method: :delete, data: { confirm: 'Desea desactivar '+militante.nombre()+'?' } do%><br><img src="<%= asset_path 'icons/png/user-42.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
         <% end %>
       </tbody>
     </table>

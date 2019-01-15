@@ -32,13 +32,13 @@
       <tbody>
         <% @estefans.each do |estefan| %>
           <tr>
-            <td><%= image_tag estefan.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%></td>
+            <td><%= link_to estefan do%><%= image_tag estefan.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%><%end%></td>
             <td><%= estefan.nombre %></td>
             <td><%= estefan.apellido %></td>
             <td><%= estefan.cargo %></td>
             <td><%= estefan.email %></td>
-            <td><%= Zona.find(estefan.zona).nombre %></td>
-            <td><%= Municipio.find(estefan.municipio).nombre %></td>
+            <td><% if estefan.zona != -1 then %><%= Zona.find(estefan.zona).nombre %><%end%></td>
+            <td><% if estefan.municipio != -1 then %><%= Municipio.find(estefan.municipio).nombre %><%end%></td>
             <td><%= link_to edit_estefan_path(estefan) do %><img src="<%= asset_path 'icons/png/user-52.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
                 <%= link_to estefan, method: :delete, data: { confirm: 'Desea desactivar '+estefan.nombre()+'?' } do%><img src="<%= asset_path 'icons/png/user-42.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>

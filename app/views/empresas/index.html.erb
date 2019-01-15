@@ -35,7 +35,7 @@
                 <%= link_to empresa.instagram do %><img src="<%= asset_path 'social/png/029-instagram.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %> <br>
                 <%= link_to empresa.web do %><img src="<%= asset_path 'politics/png/012-analytics.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
             <td><br><h5><%= empresa.nombre %></h5></td>
-            <td><br><%= empresa.direccion %>, <br><%= Municipio.find(empresa.municipio).nombre  %></td>
+            <td><br><%= empresa.direccion %>, <% if empresa.municipio != -1 then%><br><%= Municipio.find(empresa.municipio).nombre  %><%end%></td>
             <td><%= link_to edit_empresa_path(empresa) do %><img src="<%= asset_path 'icons/png/archive-12.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
                 <%= link_to empresa, method: :delete, data: { confirm: 'Desea desactivar '+empresa.nombre()+'?' } do%><img src="<%= asset_path 'icons/png/archive-2.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>

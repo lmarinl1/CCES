@@ -32,13 +32,13 @@
       <tbody>
         <% @voluntarios.each do |voluntario| %>
           <tr>
-            <td><%= image_tag voluntario.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%></td>
+            <td><%= link_to voluntario do %> <%= image_tag voluntario.picture.medium.url, class: 'figure-img img-fluid rounded', width:'60', height:'60'%><% end %></td>
             <td><%= voluntario.nombre %></td>
             <td><%= voluntario.apellido %></td>
             <td><%= voluntario.perfil %></td>
             <td><%= voluntario.email %></td>
-            <td><%= Zona.find(voluntario.zona).nombre %></td>
-            <td><%= Municipio.find(voluntario.municipio).nombre %></td>
+            <td><% if voluntario.zona != -1 then %><%= Zona.find(voluntario.zona).nombre %><%end%></td>
+            <td><% if voluntario.municipio != -1 then %><%= Municipio.find(voluntario.municipio).nombre %><%end%></td>
             <td><%= link_to edit_voluntario_path(voluntario) do %><img src="<%= asset_path 'icons/png/file-4.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
                 <%= link_to voluntario, method: :delete, data: { confirm: 'Desea desactivar '+voluntario.nombre()+'?' } do%><img src="<%= asset_path 'icons/png/file-13.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
           </tr>
