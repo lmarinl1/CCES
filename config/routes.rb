@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  
+  get 'forms/registro/:id', to: 'forms#new', as: 'forms'
+  post 'forms/create/:id', to: 'forms#create', as: 'form_save'
+  get 'forms/agradecimiento/:id', to: 'forms#agradecer', as: 'form_agradecer'
+
   resources :militantes
   resources :zonas
   devise_for :users

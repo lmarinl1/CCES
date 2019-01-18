@@ -5,7 +5,7 @@
     <%= image_tag @evento.picture.small.url, class:"rounded border border-success center",  width:"280", height:"280"%><hr>
     <p>
       <strong>Link para inscripción:</strong><br>
-      www.google.com
+      <%= link_to 'https://syscces.herokuapp.com/forms/registro/'+(@evento.id.to_s) do%> https://syscces.herokuapp.com/forms/registro/<%= @evento.id %> <%end%>
     </p>
     <%= link_to 'Editar', edit_evento_path(@evento), class:"btn btn-info" %> |
     <%= link_to 'Eventos', eventos_path, class:"btn btn-success"  %>
@@ -37,6 +37,33 @@
     </div>
   </div>
 </div>
+
+<br><br>
+<h4> Asistentes confirmados </h4>
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Nombre y Apellidos</th>
+      <th>E-mail</th>
+      <th>Celular</th>
+      <th>Empresa</th>
+      <th>Notas</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asistentes = Form.where(evento: @evento.id)%>
+    <% @asistentes.each do |m| %>
+      <tr>
+          <td><%= m.nombre %></td>
+          <td><%= m.correo %></td>
+          <td><%= m.celular %></td>
+          <td><%= m.empresa %></td>
+          <td><%= m.descripcion %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
 <br><br>

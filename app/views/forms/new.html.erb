@@ -1,0 +1,89 @@
+<%= form_for(@form, url: form_save_path(@evento.id), method: :post) do |f| %>
+						
+	<!-- Control de errores -->
+	<% if @form.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@form.errors.count, "error") %> No se permite crear este Asistente: </h2>
+
+			<ul>
+				<% @form.error.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+
+
+	<div class="row">
+		<div class="col-md-1"></div>
+
+		<div class="col-md-7">
+			Registro de asistentes:
+			<h1> <img src="<%= asset_path 'politics/png/007-vote-1.png'%>"  width="50" height="50" class="d-inline-block align-top" alt=""> <%= @evento.nombre %> </h1><br>
+
+			<h5>
+				<i>"<%= @evento.mensaje %>"</i>
+			</h5><br>
+
+			<% if (Form.where(evento: @evento.id).length <  @evento.asistentes) and (Date.today <= @evento.fecha) then %>
+
+				<div class="form-group">
+					<label for="nombre">Nombre y Apellidos*:</label>
+					<%= f.text_field :nombre, class: "form-control input-lg", placeholder:"Nombre completo", :required => true, oninvalid: "this.setCustomValidity('Nombre')", oninput: "setCustomValidity('')"%>
+				</div>
+
+				<div class="form-group">
+					<label for="celular">Celular*:</label>
+					<%= f.number_field :celular, class: "form-control input-lg", placeholder:"Celular", :required => true, oninvalid: "this.setCustomValidity('Nro Celular')", oninput: "setCustomValidity('')"%>
+				</div>
+
+				<div class="form-group">
+					<label for="email">E-mail*:</label>
+					<%= f.email_field :correo, class: "form-control input-lg", placeholder:"example@example.com", :required => true, oninvalid: "this.setCustomValidity('Dirección E-mail')", oninput: "setCustomValidity('')"%>	
+				</div>
+
+				<% if @evento.tipo == 'Evento para Emprendedores' then %>
+					<div class="form-group">
+						<label for="nombre">Empresa o emprendimiento:</label>
+						<%= f.text_field :empresa, class: "form-control input-lg", placeholder:"Empresa o emprendimiento", :required => false, oninvalid: "this.setCustomValidity('Nombre empresa o emprendimiento')", oninput: "setCustomValidity('')"%>
+					</div>
+				<% end %>
+
+				<div class="form-group">
+			      <label for="descripcion">¿Qué nos quieres decir?:</label>
+			      <%= f.text_area :descripcion, class: "form-control input-lg", placeholder:"Descripción", :required => false, oninvalid: "this.setCustomValidity('Descripción)", oninput: "setCustomValidity('')"%>	
+			    </div>
+
+
+			    <br>
+			    <small> Quedan <%= @evento.asistentes - (Form.where(evento: @evento.id).length)   %> cupos para este evento. Invita  a tus amigos y conocidos que puedan estar interesados. </small> <br><br><br>
+
+			    <%= f.submit 'enviar', class:'btn btn-primary'%>
+
+			<% else %>
+
+			<br>
+			<h4>
+				<div class="row">
+					<div class="col-md-3"><img src="<%= asset_path 'icons/png/bookmark-4.png'%>"  width="150" height="150" class="d-inline-block align-top" alt=""></div>
+					<div class="col-md-9"><b>Nota: </b><br>
+					<p>¡¡Mil disculpas!! Ya no se permiten realizar más registros para este evento. 
+						Esperamos tener verle en uno de los próximos eventos
+					</p>
+					</div>
+				</div>
+			</h4>
+
+			<% end %>
+		</div>
+
+		<div class="col-md-1"></div>
+	</div>
+
+	
+
+	
+
+
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creador: 1
+  modificador: 1
+  evento: 1
+  nombre: MyString
+  celular: MyString
+  correo: MyString
+  empresa: MyString
+  descripcion: MyText
+
+two:
+  creador: 1
+  modificador: 1
+  evento: 1
+  nombre: MyString
+  celular: MyString
+  correo: MyString
+  empresa: MyString
+  descripcion: MyText

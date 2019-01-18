@@ -29,6 +29,14 @@ class EventosController < ApplicationController
     zs.each do |z|
       @zonas.push([z.nombre,z.id])
     end
+    @tipos = [
+      ['Evento para Emprendedores'],
+      ['Evento tipo Reunión'],
+      ['Evento Político'],
+      ['Evento de ciencia y tecnología'],
+      ['Evento de educación'],
+      ['Otros eventos']
+    ]
     respond_to do |f|
       f.js 
     end
@@ -89,6 +97,6 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:zona, :picture, :activo, :fecha, :modificador, :creador, :descripcion, :nombre, :direccion, :hora)
+      params.require(:evento).permit(:zona, :tipo, :asistentes, :mensaje, :picture, :activo, :fecha, :modificador, :creador, :descripcion, :nombre, :direccion, :hora)
     end
 end
