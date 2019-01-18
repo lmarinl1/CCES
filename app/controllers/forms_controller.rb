@@ -8,7 +8,8 @@ class FormsController < ApplicationController
   end
 
   def agradecer
-  	@id_asistente = params[:id]
+  	id_asistente = params[:id]
+    @asistente = Form.find(id_asistente)
   end
 
   def create
