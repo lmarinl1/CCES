@@ -56,7 +56,7 @@ class EstefansController < ApplicationController
     @estefan = Estefan.new(estefan_params)
     @estefan.creador = current_user.id
     @estefan.modificador = current_user.id
-    @user = create_user(@estefan.email)
+    @user = create_user(@estefan.email,@estefan.cedula)
     
     
     if @estefan.save and @user[0].save
@@ -111,9 +111,9 @@ class EstefansController < ApplicationController
       params.require(:estefan).permit(:cedula, :picture, :nombre, :apellido, :nacimento, :cargo, :email, :creador, :activo, :modificador, :cel, :zona, :municipio, :instagram, :facebook, :twitter, :whatsapp, :descripcion, :sexo, :puntov)
     end
 
-    def create_user(email)
-      password = Devise.friendly_token.first(8)
-      user = User.new(:email => email, :password => password, :password_confirmation => password)
+    def create_user(email,password)
+      # password = Devise.friendly_token.first(8)
+      user = User.new(:email => email, :password => password.to_s, :password_confirmation => password.to_s)
       return [user,password]
     end
 end
