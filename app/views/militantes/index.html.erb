@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="tab col-md-3">
    <%= link_to voluntarios_path  do %> <button class="tablinks"><img src="<%= asset_path 'icons/png/file-14.png'%>"  width="30" height="30" class="d-inline-block align-top" alt=""> Voluntarios</button><%end%> 
@@ -33,7 +34,7 @@
       <tbody>
         <% @militantes.each do |militante| %>
           <tr>
-            <% link_to militante do %>
+            <%= link_to militante do %>
               <td><%= militante.cedula %></td>
               <td><%= militante.nombre %></td>
               <td><%= militante.apellido %></td>
