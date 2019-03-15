@@ -42,7 +42,7 @@
               <td><%= militante.ocupacion %></td>
               <td><%= militante.email %></td>
               <td><%= militante.cel %></td>
-              <td><%= militante.municipio %></td>
+              <td><%= Municipio.find(militante.municipio).nombre %></td>
             <% end %>
             <td><%= link_to edit_militante_path(militante) do %><img src="<%= asset_path 'icons/png/user-52.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %>
                 <%= link_to militante, method: :delete, data: { confirm: 'Desea desactivar '+militante.nombre()+'?' } do%><br><img src="<%= asset_path 'icons/png/user-42.png'%>"  width="20" height="20" class="d-inline-block align-top" alt=""><% end %></td>
